@@ -116,6 +116,17 @@ LearnPlaywrightBatch2x/
 │   ├── 16_Hoisting.js                  # Variable hoisting explained
 │   └── 17_hoisting_fn.js               # Function hoisting
 │
+├── chapter_05_javascrpit_literal/      ✅ Literals in depth
+│   ├── 22_literals.js                  # Basic literals (string, boolean, number, null, undefined)
+│   ├── 23_null_undefined.js            # null vs undefined deep dive
+│   ├── 24_null.js                      # null literal behavior
+│   ├── 25_literals_all.js              # All literals summary
+│   ├── 26_literals_numbers_all.js      # All number types & formats
+│   ├── 26_Literal_Number_all.js        # Number literals lab exercise
+│   ├── 27_string_literals.js           # Single & double quote strings
+│   ├── 28_template_literal.js          # Template literals
+│   └── 29_backtick_string.js           # Backtick string usage
+│
 └── README.md                           👋 You are here
 ```
 
@@ -378,6 +389,58 @@ mindmap
 ```bash
 node chapter_04_Javascript_Concepts/09_var_let_const.js  # → var, let, const behavior
 node chapter_04_Javascript_Concepts/16_Hoisting.js       # → see hoisting in action
+```
+
+---
+
+## 📖 What's in Chapter 5 (Available Now)
+
+### Files
+
+| File | Topic | What you'll learn |
+|------|-------|-------------------|
+| `22_literals.js` | Basic Literals | string, boolean, number, null, undefined with typeof |
+| `23_null_undefined.js` | null vs undefined | Differences between null and undefined |
+| `24_null.js` | null Literal | How null behaves as a literal |
+| `25_literals_all.js` | Literals Summary | All literal types recap |
+| `26_literals_numbers_all.js` | Number Types | Integer, float, binary, octal, hex, exponential, Infinity, NaN, BigInt |
+| `26_Literal_Number_all.js` | Number Lab | Hands-on number literal exercise |
+| `27_string_literals.js` | String Literals | Single quotes vs double quotes |
+| `28_template_literal.js` | Template Literals | String interpolation with backticks |
+| `29_backtick_string.js` | Backtick Strings | Multi-line and embedded expressions |
+
+### Key Concepts
+
+```mermaid
+mindmap
+  root((Chapter 5))
+    Literals
+      String
+      Number
+      Boolean
+      null
+      undefined
+    Number Formats
+      Decimal
+      Binary 0b
+      Octal 0o
+      Hexadecimal 0x
+      Exponential 1e3
+      Infinity
+      NaN
+      BigInt
+    Strings
+      Single quotes
+      Double quotes
+      Template literals
+```
+
+### Run them
+
+```bash
+node chapter_05_javascrpit_literal/22_literals.js                # → typeof examples
+node chapter_05_javascrpit_literal/26_literals_numbers_all.js    # → all number types
+node chapter_05_javascrpit_literal/27_string_literals.js         # → string quotes
 ```
 
 ---
