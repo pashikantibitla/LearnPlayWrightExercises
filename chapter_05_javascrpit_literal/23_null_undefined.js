@@ -1,3 +1,76 @@
+/**
+ * ============================================================
+ * FILE SUMMARY / NOTES
+ * ============================================================
+ *
+ * Topic: Comprehensive guide to null vs undefined in JavaScript, including comparisons, typeof, JSON behavior, and practical patterns.
+ *
+ * Functions/Methods Used:
+ *   - console.log(message: any): void
+ *     Description: Outputs messages to the console for debugging and demonstration.
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: void (undefined) — returns nothing; only outputs to console.
+ *   - greet(name: any): void
+ *     Description: Logs the value of the name parameter; demonstrates missing function arguments defaulting to undefined.
+ *     Input: Accepts any data type as a direct value, variable, or expression; if omitted, defaults to undefined.
+ *     Return Type: void (undefined) — returns nothing; only logs to console.
+ *   - doNothing(): undefined
+ *     Description: A function with no return statement, implicitly returning undefined.
+ *     Input: No parameters required.
+ *     Return Type: undefined — implicitly returns undefined because there is no return statement.
+ *   - isEmpty(value: any): boolean
+ *     Description: Returns true if the value is strictly null or strictly undefined.
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: boolean — returns true when the value is null or undefined, otherwise false.
+ *   - displayMessage(message: any): void
+ *     Description: Logs a message to the console, using the nullish coalescing operator (??) to provide a default.
+ *     Input: Accepts any data type as a direct value, variable, or expression; if null or undefined, a default message is used.
+ *     Return Type: void (undefined) — returns nothing; only logs the final message to console.
+ *   - JSON.stringify(value: any): string
+ *     Description: Converts a JavaScript object into a JSON string; undefined properties are omitted, while null properties are preserved.
+ *     Input: Accepts a JavaScript value (object, array, string, number, boolean, null) as a direct value, variable, or expression.
+ *     Return Type: string — returns a JSON-formatted string representation of the input value.
+ *   - typeof operand: string
+ *     Description: Returns the data type of the operand as a string.
+ *     Input: Accepts any variable, value, or expression as its operand.
+ *     Return Type: string — returns the name of the data type (e.g., "number", "string", "boolean", "undefined", "object").
+ *
+ * Built-in Methods/Keywords Used:
+ *   - let
+ *     Description: Declares a block-scoped local variable.
+ *     Input: Takes a variable name and an optional initializer value (direct value, variable, or expression).
+ *     Return Type: void — does not return a value; it binds the identifier to the value in the current scope.
+ *   - function
+ *     Description: Declares a named function.
+ *     Input: Takes a function name, a parameter list (optional), and a function body containing statements.
+ *     Return Type: void or any — returns undefined if no return statement is provided, otherwise returns the value specified by return.
+ *   - return
+ *     Description: Exits a function and optionally passes a value back to the caller.
+ *     Input: Optionally accepts a value, variable, or expression to return.
+ *     Return Type: any — returns the provided value to the caller; if no value is given, returns undefined.
+ *   - == (loose equality)
+ *     Description: Compares values after performing type coercion.
+ *     Input: Takes two operands (values, variables, or expressions) on either side of the operator.
+ *     Return Type: boolean — returns true if the values are equal after type coercion, otherwise false.
+ *   - === (strict equality)
+ *     Description: Compares both value and type without coercion.
+ *     Input: Takes two operands (values, variables, or expressions) on either side of the operator.
+ *     Return Type: boolean — returns true if the values and types are identical, otherwise false.
+ *   - ?? (nullish coalescing)
+ *     Description: Returns the right-hand operand when the left-hand operand is null or undefined.
+ *     Input: Takes two operands (values, variables, or expressions) on either side of the operator.
+ *     Return Type: any — returns the left-hand operand if it is not null or undefined, otherwise returns the right-hand operand.
+ *
+ * Key Concepts:
+ *   - undefined: Automatically assigned by JavaScript when a variable is declared but not initialized, a function argument is missing, a non-existent object property is accessed, or a function has no return statement.
+ *   - null: An intentional absence of value, explicitly set by the developer to indicate "no value".
+ *   - typeof quirk: typeof null returns "object", which is a long-standing JavaScript bug; typeof undefined returns "undefined".
+ *   - Loose vs Strict equality: null == undefined is true because of type coercion, but null === undefined is false because their types differ.
+ *   - JSON behavior: JSON.stringify removes undefined properties but keeps null properties.
+ *   - Falsy values: Both null and undefined are falsy, but they are distinct from other falsy values like 0, false, or "".
+ * ============================================================
+ */
+
 /*
     ============================================================
     NULL vs UNDEFINED in JavaScript - Complete Guide

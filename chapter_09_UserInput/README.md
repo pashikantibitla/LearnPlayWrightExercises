@@ -1,142 +1,76 @@
-# Chapter 9 — User Input
+# Chapter 9: User Input
 
-Three ways to read user input in JavaScript: the **browser-only** `prompt()`, Node's **built-in** `readline` module (async callback API), and the **npm package** `prompt-sync` (clean synchronous API). All three examples solve the same toy problem — read a number, print whether it's Even or Odd — so you can compare the ergonomics side-by-side. As SDETs, you'll mostly use the Node options; `prompt()` is here so you know why it explodes the moment you run it outside a browser.
-
-## Files
-
-| File | Approach | Runtime | Sync/Async | Needs install |
-|---|---|---|---|---|
-| `68_User_Input.js` | `prompt()` | Browser only | Sync | No |
-| `69_Node_readline.js` | `readline` (built-in) | Node | Async (callback) | No |
-| `70_prompt_sync.js` | `prompt-sync` (npm) | Node | Sync | Yes — `npm i prompt-sync` |
-
-## Concepts covered
-
-- **`prompt()`** — global in the browser, opens a modal dialog. Does **not** exist in Node — running it there throws `ReferenceError: prompt is not defined`.
-- **`readline`** — Node's built-in module. Async callback style: you create an interface bound to `process.stdin` / `process.stdout`, then call `rl.question(...)` and receive the input in a callback.
-- **`prompt-sync`** — third-party npm package. Gives you a synchronous, `prompt()`-flavored API in Node. Nice for quick scripts and demos, but requires installing a dependency.
-- **String → Number conversion** — every approach returns a **string**. Always wrap numeric input in `Number(...)` before doing math.
+This chapter covers three different ways to read user input in a Node.js environment — browser `prompt()`, built-in `readline`, and the `prompt-sync` npm package.
 
 ---
 
-### 68_User_Input.js
+## Files & What They Exercise
 
-Uses the browser global `prompt()` to read input synchronously, converts it to a number, and prints Even/Odd. Run this in a browser console or as a `<script>` — **not** in Node.
-
-```js
-let num = prompt("Enter a number:");
-num = Number(num);  // convert string to number
-
-if (num % 2 === 0) {
-    console.log(num + " is Even");
-} else {
-    console.log(num + " is Odd");
-}
-```
-
-Expected output (browser console, user types `7`):
-
-```bash
-7 is Odd
-```
-
-If you run this in Node:
-
-```bash
-$ node 68_User_Input.js
-ReferenceError: prompt is not defined
-```
+| File | Topic | Methods / Functions Used |
+|------|-------|--------------------------|
+| `68_user_input.js` | Browser `prompt()` limitation in Node | `console.log(value: any): void`, `Number(value: any): number` |
+| `69_Node_readline.js` | Node built-in `readline` module | `console.log(value: any): void`, `require(id: string): any`, `readline.createInterface(options: object): readline.Interface`, `rl.question(query: string, callback: function): void`, `rl.close(): void`, `Number(value: any): number` |
+| `70_prompt_sync.js` | `prompt-sync` npm package | `console.log(value: any): void`, `require(id: string): any`, `Number(value: any): number` |
 
 ---
 
-### 69_Node_readline.js
+## Functions, Methods & Keywords Exercised
 
-Node's built-in `readline` module — async callback API. The whole file ships **commented out** in the repo; below is the uncommented working version (with the `r1.close()` typo from the file fixed to `rl.close()`).
+### console.log(value: any): void
+- **Description:** Prints the given value to the standard output (console).
+- **Input:** Accepts any data type as a direct value, variable, or expression.
+- **Return Type:** void (undefined) — returns nothing; only outputs to console.
 
-```js
-const readline = require("readline");
+### require(id: string): any
+- **Description:** Loads a module, library, or npm package in a Node.js environment.
+- **Input:** A string representing the module name or file path.
+- **Return Type:** any — the exported object/function from the required module.
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+### readline.createInterface(options: object): readline.Interface
+- **Description:** Creates a readline interface instance for reading lines from a readable stream.
+- **Input:** An options object containing `input` (readable stream) and `output` (writable stream), typically `process.stdin` and `process.stdout`.
+- **Return Type:** readline.Interface — an instance used to prompt for user input.
 
-rl.question("Enter a number: ", (input) => {
-    let num = Number(input);
+### rl.question(query: string, callback: function): void
+- **Description:** Displays a query to the user and waits for input. The callback receives the user's answer as a string.
+- **Input:** A prompt string and a callback function `(answer: string) => void`.
+- **Return Type:** void — asynchronous; result is passed to the callback.
 
-    if (num % 2 === 0) {
-        console.log(num + " is Even");
-    } else {
-        console.log(num + " is Odd");
-    }
+### rl.close(): void
+- **Description:** Closes the readline interface and releases the input/output streams.
+- **Input:** No input.
+- **Return Type:** void — terminates the readline session.
 
-    rl.close();
-});
-```
+### Number(value: any): number
+- **Description:** Converts the given value to a number primitive.
+- **Input:** Any value (string, boolean, etc.).
+- **Return Type:** number — the numeric representation; returns `NaN` if conversion fails.
 
-Expected output:
+### prompt(message: string): string
+- **Description:** (From `prompt-sync` package) Displays a message and waits for the user to type input synchronously.
+- **Input:** A string message to display as a prompt.
+- **Return Type:** string — the raw text entered by the user.
 
-```bash
-$ node 69_Node_readline.js
-Enter a number: 4
-4 is Even
-```
+### process.stdin
+- **Description:** A readable stream for the standard input (keyboard) in Node.js.
+- **Input:** No input — accessed as a property.
+- **Return Type:** stream.Readable — the stdin stream object.
 
----
+### process.stdout
+- **Description:** A writable stream for the standard output (console) in Node.js.
+- **Input:** No input — accessed as a property.
+- **Return Type:** stream.Writable — the stdout stream object.
 
-### 70_prompt_sync.js
-
-`prompt-sync` gives you a clean, blocking, browser-`prompt()`-style API in Node. The file ships **commented out**; install the package first, then uncomment.
-
-```js
-const prompt = require("prompt-sync")();
-
-let num = Number(prompt("Enter a number: "));
-
-if (num % 2 === 0) {
-    console.log(num + " is Even");
-} else {
-    console.log(num + " is Odd");
-}
-```
-
-Expected output:
-
-```bash
-$ npm install prompt-sync
-$ node 70_prompt_sync.js
-Enter a number: 9
-9 is Odd
-```
+### Arrow Function (Callback)
+- **Description:** A concise function expression commonly used as a callback.
+- **Input:** Defined by its parameters (e.g., `(answer) => { ... }`).
+- **Return Type:** Depends on the function body; often `void` for callbacks.
 
 ---
 
-## Comparison table
+## Key Concepts
 
-| Feature | `prompt()` | `readline` | `prompt-sync` |
-|---|---|---|---|
-| Where it runs | Browser only | Node | Node |
-| Style | Sync (modal dialog) | Async (callback) | Sync (blocking) |
-| Needs install | No | No (built-in) | Yes (`npm i prompt-sync`) |
-| Returns | String | String (in callback) | String |
-| Best for | Browser demos | Real Node scripts / CLI tools | Quick demos & teaching |
-
-## How to run
-
-```bash
-# 68 — will FAIL in Node with ReferenceError: prompt is not defined
-node chapter_09_UserInput/68_User_Input.js
-
-# 69 — works after uncommenting the file (built-in module, no install)
-node chapter_09_UserInput/69_Node_readline.js
-
-# 70 — install first, then uncomment the file
-npm install prompt-sync
-node chapter_09_UserInput/70_prompt_sync.js
-```
-
-Tip for `68_User_Input.js`: paste the code into your browser's DevTools Console, or wrap it in an HTML `<script>` tag and open the file in a browser.
-
-## Takeaway
-
-All three APIs hand you back a **string** — `Number(input)` is non-negotiable for any math, comparison, or modulo check. Pick `readline` for real Node CLIs, `prompt-sync` for quick teaching demos, and remember that `prompt()` only lives in the browser. 🧪
+- **Synchronous vs Asynchronous Input:** `prompt-sync` blocks until input is received; `readline` is event-driven.
+- **Type Conversion:** User input is always a string; use `Number()` to convert to numeric.
+- **Browser vs Node:** `prompt()` is a browser API and does NOT exist in Node.js.
+- **Callback Pattern:** `readline.question` uses a callback to handle asynchronous input.

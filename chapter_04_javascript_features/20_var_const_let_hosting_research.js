@@ -1,3 +1,84 @@
+/**
+ * ============================================================
+ * FILE SUMMARY / NOTES
+ * ============================================================
+ *
+ * Topic: Comprehensive comparison of hoisting behavior for var, let, const, and functions
+ *
+ * Functions/Methods Used:
+ *   - demoVarHoisting(): void
+ *     Description: Demonstrates var hoisting inside a function and var leaking out of block scope.
+ *     Input: Takes no parameters.
+ *     Return Type: void — returns undefined; only logs to console.
+ *   - sayHello(): void
+ *     Description: A function declaration that is fully hoisted, allowing it to be called before its definition.
+ *     Input: Takes no parameters.
+ *     Return Type: void — returns undefined; only logs to console.
+ *   - sayHi(): void (function expression)
+ *     Description: Assigned to a var, it behaves like a var variable (hoisted as undefined, not callable before declaration).
+ *     Input: Takes no parameters.
+ *     Return Type: void — returns undefined; only logs to console.
+ *   - conditionalDemo(flag: boolean): void
+ *     Description: Shows the difference between var and let hoisting inside an if block.
+ *     Input: Takes a boolean value provided as a direct value, variable, or expression.
+ *     Return Type: void — returns undefined; only logs to console.
+ *   - setTimeout(callback: Function, delay: number): number (commented in loops)
+ *     Description: Schedules a callback to execute after a delay; used to demonstrate closure/loop scope issues.
+ *     Input: Accepts a callback function and a delay in milliseconds provided as direct values, variables, or expressions.
+ *     Return Type: number — returns a timeout identifier that can be used with clearTimeout.
+ *   - console.log(message: any): void
+ *     Description: Used extensively to log hoisting results and comparison outputs.
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: void — returns nothing; only outputs to console.
+ *
+ * Built-in Methods/Keywords:
+ *   - var
+ *     Description: Hoisted and initialized with undefined; function-scoped; leaks out of blocks.
+ *     Input: Takes a variable name and an optional initial value provided as a direct value, variable, or expression.
+ *     Return Type: void — does not return a value; creates a variable binding initialized with undefined when hoisted.
+ *   - let
+ *     Description: Hoisted but not initialized; block-scoped; throws ReferenceError in TDZ.
+ *     Input: Takes a variable name and an optional initial value provided as a direct value, variable, or expression.
+ *     Return Type: void — does not return a value; creates a variable binding in the current block scope that starts in the Temporal Dead Zone.
+ *   - const
+ *     Description: Hoisted but not initialized; block-scoped; must be initialized at declaration; throws ReferenceError in TDZ.
+ *     Input: Takes a variable name and a required initial value provided as a direct value, variable, or expression.
+ *     Return Type: void — does not return a value; creates a read-only binding in the current block scope.
+ *   - function
+ *     Description: Fully hoisted (declaration + body); safe to call before its definition.
+ *     Input: Takes a function name, an optional parameter list enclosed in parentheses, and a function body wrapped in curly braces.
+ *     Return Type: void (as a declaration statement) — does not return a value in the statement context; creates a named function object in the current scope.
+ *   - typeof
+ *     Description: Returns a string indicating the type of the operand; throws ReferenceError in TDZ for let/const.
+ *     Input: Accepts a single operand provided as a variable, value, or expression.
+ *     Return Type: string — returns the name of the data type (e.g., "number", "string", "undefined").
+ *   - for loop
+ *     Description: Demonstrates var leaking vs let creating a new binding per iteration.
+ *     Input: Accepts three optional expressions (initialization, condition, increment) separated by semicolons.
+ *     Return Type: void — does not return a value; controls iteration flow.
+ *   - if statement
+ *     Description: Conditional block used to show block scope differences between var and let.
+ *     Input: Accepts a boolean condition provided as a direct value, variable, or expression.
+ *     Return Type: void — does not return a value; controls execution flow based on the condition.
+ *   - {} (block)
+ *     Description: Creates a block scope where let and const respect boundaries but var does not.
+ *     Input: Contains a sequence of statements wrapped in curly braces.
+ *     Return Type: void — does not return a value; defines a new block scope.
+ *   - .push(item: any): number
+ *     Description: Array method that adds an element to the end; allowed on const-bound arrays because the binding is constant, not the contents.
+ *     Input: Takes an item to add provided as a direct value, variable, or expression.
+ *     Return Type: number — returns the new length of the array after the element is added.
+ *
+ * Key Concepts:
+ *   - Hoisting: JavaScript's behavior of moving declarations to the top of their scope during compilation.
+ *   - Temporal Dead Zone (TDZ): The span from block entry to let/const declaration where access is illegal.
+ *   - Function declaration vs expression: Declarations are fully hoisted; expressions assigned to variables follow variable hoisting rules.
+ *   - Scope differences: var is function-scoped; let and const are block-scoped.
+ *   - const mutability: const prevents reassignment of the binding but does not make objects/arrays immutable.
+ *   - Best practices: Prefer const by default, use let when reassignment is needed, avoid var in modern JavaScript.
+ * ============================================================
+ */
+
 // =============================================================================
 // HOISTING IN JAVASCRIPT: var vs let vs const
 // =============================================================================

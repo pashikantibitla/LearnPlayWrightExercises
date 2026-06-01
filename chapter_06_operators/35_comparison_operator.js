@@ -1,3 +1,25 @@
+/**
+ * ============================================================
+ * FILE SUMMARY / NOTES
+ * ============================================================
+ * 
+ * Topic: Comparison Operators (>, <, >=, <=)
+ * 
+ * Built-in Methods/Keywords Used:
+ *   - console.log(value: any): void
+ *     Description: Prints the given value to the standard output (console).
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: void (undefined) — returns nothing; only outputs to console.
+ * 
+ * Key Concepts:
+ *   - Comparison Operators: Evaluate the relationship between two values and return a boolean (true or false).
+ *   - Greater Than (>): Returns true if the left value is larger than the right.
+ *   - Less Than (<): Returns true if the left value is smaller than the right.
+ *   - Greater Than or Equal To (>=): Returns true if the left value is greater than or equal to the right (logical OR of > and ===).
+ *   - Less Than or Equal To (<=): Returns true if the left value is less than or equal to the right (logical OR of < and ===).
+ * ============================================================
+ */
+
 // Comparsion Op - true / false - boolean
 
 // > , < , >= , <= , == , === , !, !=, !===

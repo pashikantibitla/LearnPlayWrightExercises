@@ -1,3 +1,49 @@
+/**
+ * ============================================================
+ * FILE SUMMARY / NOTES
+ * ============================================================
+ *
+ * Topic: Comprehensive identifier rules in JavaScript, including valid start characters, allowed subsequent characters, case sensitivity, Unicode support, and naming conventions.
+ *
+ * Functions/Methods Used:
+ *   - console.log(message: any): undefined
+ *     Description: Outputs messages to the console for debugging and verification.
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: undefined (void) — returns nothing; only outputs to console.
+ *   - getUserInfo(): string
+ *     Description: A sample function using camelCase naming; returns a descriptive string.
+ *     Input: No parameters; called directly.
+ *     Return Type: string — a descriptive text value.
+ *   - Person(): string
+ *     Description: A sample constructor-style function using PascalCase naming; returns a descriptive string.
+ *     Input: No parameters; called directly.
+ *     Return Type: string — a descriptive text value.
+ *
+ * Keywords Used:
+ *   - let (keyword)
+ *     Description: Declares a block-scoped local variable.
+ *     Input: Requires an identifier (variable name) and optionally an initial value assignment.
+ *     Return Type: void (undefined) — the declaration itself does not return a value.
+ *   - const (keyword)
+ *     Description: Declares a block-scoped read-only constant.
+ *     Input: Requires an identifier (constant name) and a mandatory initial value assignment.
+ *     Return Type: void (undefined) — the declaration itself does not return a value.
+ *   - function (keyword)
+ *     Description: Declares a function with the specified parameters.
+ *     Input: Requires a function name, parameter list (optional), and a function body.
+ *     Return Type: void (undefined) for the declaration itself; the invoked function may return a value.
+ *
+ * Key Concepts:
+ *   - Identifier Start Rules: Must begin with a letter, underscore (_), or dollar sign ($).
+ *   - Digits Allowed After First Character: Subsequent characters may include digits (0-9).
+ *   - No Leading Digits: Starting with a number causes a SyntaxError.
+ *   - Reserved Keywords: Using reserved words (e.g., class, const, function) as identifiers causes a SyntaxError.
+ *   - Case Sensitivity: myVar, myvar, and MyVar are three distinct identifiers.
+ *   - Unicode Support: Identifiers can include Unicode letters and Unicode escape sequences (e.g., \u0041).
+ *   - Invalid Characters: Spaces, hyphens, and most special characters (@, #, !) are not allowed in identifiers.
+ * ============================================================
+ */
+
 // ============================================
 // JavaScript Identifier Rules - Single Example
 // ============================================

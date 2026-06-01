@@ -1,3 +1,39 @@
+/**
+ * ============================================================
+ * FILE SUMMARY / NOTES
+ * ============================================================
+ *
+ * Topic: let block-scoping rules, reassignment, and the Temporal Dead Zone (TDZ)
+ *
+ * Functions/Methods Used:
+ *   - console.log(message: any): void
+ *     Description: Prints values to the console to demonstrate scope visibility.
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: void — returns nothing; only outputs to console.
+ *
+ * Built-in Methods/Keywords:
+ *   - let
+ *     Description: Declares a block-scoped variable that cannot be redeclared in the same scope but can be reassigned.
+ *     Input: Takes a variable name and an optional initial value provided as a direct value, variable, or expression.
+ *     Return Type: void — does not return a value; creates a variable binding in the current block scope.
+ *   - if statement
+ *     Description: Conditional control structure that creates a new block scope when paired with curly braces {}.
+ *     Input: Accepts a boolean condition provided as a direct value, variable, or expression.
+ *     Return Type: void — does not return a value; controls execution flow based on the condition.
+ *   - typeof
+ *     Description: Operator that returns the data type string of a variable; fails in TDZ for let/const.
+ *     Input: Accepts a single operand provided as a variable, value, or expression.
+ *     Return Type: string — returns the name of the data type (e.g., "number", "string", "undefined").
+ *
+ * Key Concepts:
+ *   - Block scope: Variables declared with let inside {} are only accessible within those braces.
+ *   - No redeclaration: let prevents declaring a variable with the same name in the same scope (SyntaxError).
+ *   - Reassignment allowed: A let variable can be updated with a new value after initialization.
+ *   - ReferenceError: Accessing a block-scoped let variable outside its block throws an error.
+ *   - Temporal Dead Zone (TDZ): The period from the start of a block until the let declaration is reached.
+ * ============================================================
+ */
+
 // let - Block Scoped
 let a = 10;
 

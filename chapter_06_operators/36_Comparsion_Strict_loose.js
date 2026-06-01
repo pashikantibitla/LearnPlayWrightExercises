@@ -1,3 +1,24 @@
+/**
+ * ============================================================
+ * FILE SUMMARY / NOTES
+ * ============================================================
+ * 
+ * Topic: Strict Equality (===) vs Loose Equality (==)
+ * 
+ * Built-in Methods/Keywords Used:
+ *   - console.log(value: any): void
+ *     Description: Prints the given value to the standard output (console).
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: void (undefined) — returns nothing; only outputs to console.
+ * 
+ * Key Concepts:
+ *   - Loose Equality (==): Compares values after performing type coercion (converting operands to a common type).
+ *   - Strict Equality (===): Compares both value and data type without type coercion.
+ *   - Type Coercion Examples: 0 == "" is true because "" is coerced to 0; true == 1 is true because true is coerced to 1.
+ *   - Inequality Operators: != is the loose inequality counterpart; !== is the strict inequality counterpart.
+ * ============================================================
+ */
+
 // // number == string
 console.log(42 == "42"); // == -> loose compasion
 console.log(42 === "42"); //data type and converconsoleted value

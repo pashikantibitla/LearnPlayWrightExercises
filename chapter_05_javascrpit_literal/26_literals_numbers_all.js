@@ -1,3 +1,48 @@
+/**
+ * ============================================================
+ * FILE SUMMARY / NOTES
+ * ============================================================
+ *
+ * Topic: Comprehensive overview of all number literal formats and special numeric values in JavaScript.
+ *
+ * Functions/Methods Used:
+ *   - console.log(message: any): void
+ *     Description: Outputs messages to the console for debugging and demonstration.
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: void (undefined) — returns nothing; only outputs to console.
+ *   - BigInt(value: string | number): bigint
+ *     Description: Constructor/function that creates a BigInt from a string or number; BigInt is used for arbitrarily large integers.
+ *     Input: Accepts a string or number as a direct value, variable, or expression.
+ *     Return Type: bigint — returns a BigInt primitive representing the given value.
+ *   - Number.MAX_VALUE, Number.MIN_VALUE, Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER, Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY, Number.NaN, Number.EPSILON: number
+ *     Description: Static properties of the Number object that define the boundaries and special constants for JavaScript numeric values.
+ *     Input: No input required; accessed directly as static properties of the Number object.
+ *     Return Type: number — returns the corresponding numeric constant value.
+ *
+ * Built-in Methods/Keywords Used:
+ *   - let
+ *     Description: Declares a block-scoped local variable.
+ *     Input: Takes a variable name and an optional initializer value (direct value, variable, or expression).
+ *     Return Type: void — does not return a value; it binds the identifier to the value in the current scope.
+ *   - typeof operand: string
+ *     Description: Returns the data type of the operand as a string.
+ *     Input: Accepts any variable, value, or expression as its operand.
+ *     Return Type: string — returns the name of the data type (e.g., "number", "string", "boolean", "undefined", "object").
+ *
+ * Key Concepts:
+ *   - Decimal integer: Standard base-10 whole numbers (e.g., 42).
+ *   - Binary literal: Base-2 numbers prefixed with 0b or 0B (e.g., 0b1010).
+ *   - Octal literal: Base-8 numbers prefixed with 0o or 0O (e.g., 0o17).
+ *   - Hexadecimal literal: Base-16 numbers prefixed with 0x or 0X (e.g., 0x1F).
+ *   - Floating-point literal: Numbers with a decimal point (e.g., 3.14, -0.5).
+ *   - Exponential notation: Scientific notation using e or E (e.g., 1.5e3 equals 1500).
+ *   - Numeric separator: Underscores within numbers for readability, introduced in ES2021 (e.g., 1_000_000).
+ *   - BigInt: A separate primitive type for arbitrarily large integers, created by appending n or using BigInt() (e.g., 9007199254740991n).
+ *   - Infinity: Represents positive or negative infinity, often resulting from division by zero.
+ *   - NaN (Not a Number): Represents the result of an invalid or undefined numeric operation; typeof NaN is "number".
+ * ============================================================
+ */
+
 // JavaScript supports only one number type: Number (IEEE 754 double-precision 64-bit floating point)
 // However, numbers can be written in various literal formats
 

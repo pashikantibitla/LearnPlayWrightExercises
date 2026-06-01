@@ -1,3 +1,38 @@
+/**
+ * ============================================================
+ * FILE SUMMARY / NOTES
+ * ============================================================
+ * 
+ * Topic: Confusing Comparisons and Type Coercion in JavaScript
+ * 
+ * Built-in Methods/Keywords Used:
+ *   - console.log(value: any): void
+ *     Description: Prints the given value to the standard output (console).
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: void (undefined) — returns nothing; only outputs to console.
+ *   - Number.isNaN(value: number): boolean
+ *     Description: Determines whether the passed value is NaN (Not-a-Number) and of type Number.
+ *     Input: Accepts a numeric value as a direct value, variable, or expression.
+ *     Return Type: boolean — returns true if the value is NaN and of type Number; otherwise false.
+ *   - typeof operand: string
+ *     Description: Returns a string indicating the data type of the unevaluated operand.
+ *     Input: Accepts any operand as a direct value, variable, or expression.
+ *     Return Type: string — returns the name of the data type (e.g., "number", "string", "boolean", "undefined", "object").
+ *   - Object.is(value1: any, value2: any): boolean
+ *     Description: Determines whether two values are the same value (handles NaN and -0 correctly).
+ *     Input: Accepts two values of any data type as direct values, variables, or expressions.
+ *     Return Type: boolean — returns true if both values are the same value; otherwise false.
+ * 
+ * Key Concepts:
+ *   - Loose Equality (==) Traps: == performs type coercion, leading to surprising results (e.g., [] == false is true).
+ *   - Strict Equality (===): Always use === (and !==) to avoid type coercion surprises.
+ *   - null vs undefined: null == undefined is true, but null === undefined is false.
+ *   - NaN Behavior: NaN is never equal to anything, including itself; use Number.isNaN() for reliable checks.
+ *   - typeof Quirks: typeof null returns "object" (a known legacy bug in JavaScript).
+ *   - Array/Type Coercion: Arrays are converted to strings during loose equality comparisons with primitives.
+ * ============================================================
+ */
+
 console.log("38 — Confusing Comparisons in JS");
 // ============================================================
 // 38 — Confusing Comparisons in JS:  ==  vs  ===

@@ -1,3 +1,31 @@
+/**
+ * ============================================================
+ * FILE SUMMARY / NOTES
+ * ============================================================
+ * 
+ * Topic: Ternary Operator (Conditional ? : )
+ * 
+ * Built-in Methods/Keywords Used:
+ *   - let
+ *     Description: Declares a block-scoped local variable, optionally initializing it to a value.
+ *     Input: Accepts a variable name and an optional initial value as a direct value, variable, or expression.
+ *     Return Type: void — the declaration does not return a value; it creates a variable binding in the current scope.
+ *   - console.log(value: any): void
+ *     Description: Prints the given value to the standard output (console).
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: void (undefined) — returns nothing; only outputs to console.
+ *   - Template Literals (`...${...}...`)
+ *     Description: Allows embedded expressions inside string literals using backticks for formatted output.
+ *     Input: Accepts string content with embedded expressions as direct values, variables, or expressions inside ${}.
+ *     Return Type: string — returns the evaluated string with interpolated values.
+ * 
+ * Key Concepts:
+ *   - Ternary Operator Syntax: condition ? valueIfTrue : valueIfFalse
+ *   - Use Cases: Evaluating eligibility, API response checks, environment selection, headed/headless mode, SLA checks.
+ *   - Nested Ternary: Ternary operators can be nested for multiple conditions, though readability should be considered.
+ * ============================================================
+ */
+
 let a_age = 10;
 let b_qualification = a_age >= 18 ? "eligiable for voting ": "Nope, not eligible";
 console.log("eligibility criteria : " , b_qualification)

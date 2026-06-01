@@ -1,3 +1,35 @@
+/**
+ * ============================================================
+ * FILE SUMMARY / NOTES
+ * ============================================================
+ *
+ * Topic: JavaScript variable declaration with let and const, and common naming conventions (cases).
+ *
+ * Functions/Methods Used:
+ *   - console.log(message: any): undefined
+ *     Description: Outputs the provided value(s) to the console.
+ *     Input: Accepts any data type as a direct value, variable, or expression.
+ *     Return Type: undefined (void) — returns nothing; only outputs to console.
+ *
+ * Keywords Used:
+ *   - let (keyword)
+ *     Description: Declares a block-scoped local variable, optionally initializing it to a value.
+ *     Input: Requires an identifier (variable name) and optionally an initial value assignment.
+ *     Return Type: void (undefined) — the declaration itself does not return a value.
+ *   - const (keyword)
+ *     Description: Declares a block-scoped, read-only named constant that must be initialized at declaration.
+ *     Input: Requires an identifier (constant name) and a mandatory initial value assignment.
+ *     Return Type: void (undefined) — the declaration itself does not return a value.
+ *
+ * Key Concepts:
+ *   - camelCase: First word lowercase, subsequent words capitalized (standard for JS variables and functions).
+ *   - PascalCase: Every word starts with a capital letter (standard for JS classes and constructors).
+ *   - snake_case: Words separated by underscores.
+ *   - SCREAMING_SNAKE_CASE: All uppercase with underscores (convention for constants).
+ *   - Hungarian Notation: Prefixing variable names with type indicators (older style).
+ * ============================================================
+ */
+
 let name = "Pramod";
 console.log("the value of name is : ", name);
 
