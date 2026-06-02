@@ -44,3 +44,55 @@ let b = 100;
     let score = 100;
     console.log("the sore value is: " , score);
 }
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file demonstrates let hoisting and the Temporal Dead Zone (TDZ).
+Unlike var, let IS hoisted to the top of its block, but it is NOT initialized.
+From the start of the block until the declaration line, the variable is in the TDZ.
+Accessing it during this period throws a ReferenceError.
+
+CODE BREAKDOWN
+=====================================
+1. let b = 100;
+   - Declared at the top level. Accessing before this line would throw ReferenceError.
+2. { ... let score = 100; ... }
+   - Inside the block, score enters the TDZ from the opening brace.
+   - The commented-out lines show operations that would fail in the TDZ:
+     console.log(score), score = 12, typeof score.
+   - After let score = 100, the variable is safe to use.
+
+KEY CONCEPTS
+=====================================
+- TDZ (Temporal Dead Zone): The period from block entry until the let declaration.
+- Hoisting without Initialization: let is hoisted but remains uninitialized, unlike var.
+- ReferenceError: Accessing a let variable in its TDZ results in a runtime error.
+- Block Scope Isolation: let variables inside {} are only accessible within that block.
+
+COMPARISON TABLE: var vs let Hoisting
+=====================================
+| Aspect           | var                      | let                     |
+|------------------|--------------------------|-------------------------|
+| Hoisted?         | Yes                      | Yes                     |
+| Initial value    | undefined                | Uninitialized (TDZ)     |
+| Early access     | Returns undefined        | Throws ReferenceError   |
+| typeof before    | "undefined"              | Throws ReferenceError   |
+
+REAL-WORLD USE CASES
+=====================================
+- Enforcing clean code structure by preventing use-before-declaration.
+- Avoiding subtle bugs from partially initialized variables.
+- Understanding modern JavaScript interview questions.
+
+COMMON MISTAKES
+=====================================
+- Thinking let is NOT hoisted at all (it is, but into TDZ).
+- Using typeof on a let variable before its declaration (throws ReferenceError).
+- Trying to assign to a let variable before its declaration line.
+
+KEY TAKEAWAY
+=====================================
+let IS hoisted, but the Temporal Dead Zone prevents you from using it until the declaration line. This is a feature, not a bug — it catches errors early.
+*/

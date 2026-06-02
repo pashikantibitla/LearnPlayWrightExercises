@@ -67,3 +67,19 @@ This chapter covers the `switch` statement for multi-way branching. You will lea
 - **Default Case:** Acts as an `else` for the switch — runs when no cases match.
 - **Type Sensitivity:** Because switch uses `===`, `"5"` does NOT match `5`.
 - **Duplicate Cases:** Having two `case` labels with the same value is a syntax error.
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., `if-else` vs `switch`, break behavior)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

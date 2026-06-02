@@ -51,3 +51,47 @@ switch (fruit) {
     default:
         console.log("Default reached");
 }
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script illustrates two switch behaviors: (1) fall-through when break is omitted,
+and (2) the default case executing when no case matches. The input "bmango" does not
+match any fruit case, so execution jumps directly to default.
+
+CODE BREAKDOWN:
+1. let fruit = "bmango";             — Input string (note the typo / prefix 'b').
+2. case "apple": ...                 — No match.
+3. case "banana": ...               — No match.
+4. case "cherry": ...               — No match.
+5. case "date": ...                 — No match.
+6. default: console.log("Default reached"); — Executes because no case matched.
+
+KEY CONCEPTS:
+• No Match → Default: When strict equality fails for all cases, default runs.
+• Fall-Through: If a case had matched without break, all subsequent cases would also run.
+• String Sensitivity: "bmango" is not the same as "mango" or "banana".
+
+COMPARISON TABLE — Matched vs Unmatched:
+| Input     | Match Found? | Output (no break)                         |
+|-----------|--------------|-------------------------------------------|
+| "apple"   | Yes (case 0) | Apple, Banana, Cherry, Date, Default      |
+| "bmango"  | No           | Default reached                           |
+
+REAL-WORLD USE CASES:
+• Input sanitization (unknown commands trigger a help message).
+• Feature flags (unrecognized flag falls back to safe defaults).
+• Menu-driven applications (invalid choice → "Please select a valid option").
+
+COMMON MISTAKES:
+• Assuming default only runs after a matched case; it runs when NO case matches.
+• Typos in strings ("bmango" instead of "mango") leading to unexpected default.
+• Omitting break on purpose without understanding the consequences.
+
+KEY TAKEAWAY:
+The default case is your safety net for unhandled values. Use it to provide meaningful
+feedback rather than silent failures. Pay close attention to string accuracy in case labels.
+================================================================================
+*/

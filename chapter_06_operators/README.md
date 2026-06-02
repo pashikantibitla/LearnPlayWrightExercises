@@ -79,3 +79,19 @@ This chapter covers every category of operators in JavaScript — assignment, ar
 | `??` | Nullish Coalescing | Two values | The first non-nullish value | Returns right side only if left is null/undefined. |
 | `++a` | Pre-increment | One number | number (new value) | Increments first, then returns the new value. |
 | `a++` | Post-increment | One number | number (old value) | Returns the old value, then increments. |
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., strict vs loose equality, pre vs post increment, `??` vs `||`)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

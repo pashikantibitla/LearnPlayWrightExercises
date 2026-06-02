@@ -68,3 +68,59 @@ function say() {
 
 say();
 say();
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file demonstrates the core differences between var, let, and const in JavaScript.
+It shows that var allows redeclaration and reassignment, while let and const have stricter rules.
+The for-loop example reveals a classic var pitfall: the loop counter i leaks outside the block.
+Finally, it introduces function declarations and invocations.
+
+CODE BREAKDOWN
+=====================================
+1. var v = 10; let l = 30; const c = 3.14;
+   - Three variables declared with different keywords.
+2. var browser = "chrome"; var browser = "firefox";
+   - var permits redeclaration in the same scope without error.
+3. for (var i = 0; i < testCases.length; i++) { ... }
+   - Using var inside a loop causes the variable to exist in the outer scope.
+4. console.log("Loop counter leaked outside:", i);
+   - i is accessible here because var is function-scoped, not block-scoped.
+5. function say() { ... } and say();
+   - A named function is declared and then invoked twice.
+
+KEY CONCEPTS
+=====================================
+- var: Function-scoped, can be redeclared and reassigned.
+- let: Block-scoped, can be reassigned but not redeclared in the same scope.
+- const: Block-scoped, cannot be reassigned or redeclared; must be initialized.
+- Scope Leakage: var declarations inside loops or if-blocks escape to the enclosing function or global scope.
+
+COMPARISON TABLE: var vs let vs const
+=====================================
+| Feature          | var               | let               | const             |
+|------------------|-------------------|-------------------|-------------------|
+| Scope            | Function-scoped   | Block-scoped      | Block-scoped      |
+| Redeclaration    | Allowed           | Not Allowed       | Not Allowed       |
+| Reassignment     | Allowed           | Allowed           | Not Allowed       |
+| Hoisting Value   | undefined         | TDZ (uninitialized)| TDZ (uninitialized)|
+| Must Initialize  | No                | No                | Yes               |
+
+REAL-WORLD USE CASES
+=====================================
+- Use const for configuration values like API base URLs or fixed test data.
+- Use let for counters, loop indices, or any value that needs to change.
+- Avoid var in modern JavaScript to prevent accidental global pollution and scope leakage.
+
+COMMON MISTAKES
+=====================================
+- Redeclaring a var variable by accident and overwriting an important value.
+- Expecting a loop variable to stay private to the loop block when using var.
+- Trying to reassign a const primitive value, which throws a TypeError.
+
+KEY TAKEAWAY
+=====================================
+Always prefer const by default. Use let only when reassignment is necessary. Avoid var to eliminate scope-related bugs and make your code more predictable.
+*/

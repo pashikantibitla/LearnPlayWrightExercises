@@ -51,3 +51,57 @@ function greet()
 { console.log("Hi"); }
 
 let count = count + 1
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file demonstrates the critical difference between function declarations and function expressions,
+as well as the danger of referencing a variable in its own initialization expression.
+Function declarations are fully hoisted, so they can be called before their definition.
+Function expressions assigned to let/const are NOT hoisted with their body and will throw ReferenceError in the TDZ.
+
+CODE BREAKDOWN
+=====================================
+1. // sayHi(); // ReferenceError
+   - A function expression assigned to const/let cannot be called before its declaration.
+   - The variable is in the TDZ until the assignment line.
+2. greet(); function greet() { ... }
+   - Function declaration is fully hoisted, so the call before definition works perfectly.
+3. let count = count + 1
+   - count is in the TDZ during its own initialization.
+   - Reading count on the right side before it is initialized results in NaN.
+
+KEY CONCEPTS
+=====================================
+- Function Declaration Hoisting: Entire function is moved to the top, so calls can precede definitions.
+- Function Expression Hoisting: Only the variable declaration is hoisted; the function body is not available until the assignment line.
+- TDZ with Expressions: Function expressions assigned to let/const cannot be called before their declaration.
+- NaN from TDZ: Using a let variable in its own initialization expression produces NaN.
+
+COMPARISON TABLE: Function Declaration vs Expression
+=====================================
+| Feature              | Function Declaration      | Function Expression      |
+|----------------------|---------------------------|--------------------------|
+| Syntax               | function name() {}        | const name = function() {}|
+| Hoisting             | Fully hoisted             | Variable only hoisted    |
+| Call before def?     | Yes                       | No                       |
+| TDZ applies?         | No                        | Yes                      |
+| Typical use          | Named utilities           | Callbacks, closures      |
+
+REAL-WORLD USE CASES
+=====================================
+- Organizing code with function declarations at the bottom for readability.
+- Using function expressions as callbacks in array methods (map, filter, forEach).
+- Avoiding hoisting surprises by using expressions when order matters.
+
+COMMON MISTAKES
+=====================================
+- Calling a function expression before its assignment line.
+- Self-referencing a variable during its own let initialization (produces NaN).
+- Relying on hoisting for expressions instead of declarations.
+
+KEY TAKEAWAY
+=====================================
+Function declarations are fully hoisted; expressions are not. Always place expressions before their first use, and never read a let variable during its own initialization.
+*/

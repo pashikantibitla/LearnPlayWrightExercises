@@ -74,3 +74,19 @@ This chapter covers three different ways to read user input in a Node.js environ
 - **Type Conversion:** User input is always a string; use `Number()` to convert to numeric.
 - **Browser vs Node:** `prompt()` is a browser API and does NOT exist in Node.js.
 - **Callback Pattern:** `readline.question` uses a callback to handle asynchronous input.
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., browser `prompt` vs `readline` vs `prompt-sync`)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

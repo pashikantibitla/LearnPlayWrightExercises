@@ -66,3 +66,50 @@ if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
 } else {
     console.log(year + " is NOT a Leap Year");
 }
+
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script calculates whether a given year is a leap year. It encodes the Gregorian
+calendar rules into a single boolean expression using modulo, logical AND, and logical OR.
+
+CODE BREAKDOWN:
+1. let year = 2024;                                          — Year to test.
+2. if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) { ... }
+   — Rule 1: Divisible by 4 but NOT by 100.
+   — Rule 2: OR divisible by 400.
+3. console.log(year + " is a Leap Year")                      — True branch.
+4. else { console.log(year + " is NOT a Leap Year") }         — False branch.
+
+KEY CONCEPTS:
+• Divisibility Test: year % N === 0 means N divides year evenly.
+• Logical AND && : Both sub-conditions must be true.
+• Logical OR || : At least one sub-condition must be true.
+• Parentheses: Control evaluation order in complex expressions.
+
+COMPARISON TABLE — Leap Year Rules:
+| Condition                         | Result     |
+|-----------------------------------|------------|
+| Divisible by 4 AND not by 100     | Leap Year  |
+| Divisible by 400                  | Leap Year  |
+| Divisible by 100 but not by 400   | Not Leap   |
+| All other years                   | Not Leap   |
+
+REAL-WORLD USE CASES:
+• Calendar applications (February 29 handling).
+• Scheduling systems that depend on day-of-year counts.
+• Date-validation in forms.
+
+COMMON MISTAKES:
+• Forgetting the year % 100 !== 0 part, causing century years like 1900 to be marked leap.
+• Using a single | or & (bitwise) instead of || and &&.
+• Misplacing parentheses, altering the logic precedence.
+
+KEY TAKEAWAY:
+Break complex rules into small boolean expressions and group them with parentheses.
+Test edge cases like 1900, 2000, and 2024 to ensure correctness.
+================================================================================
+*/

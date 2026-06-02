@@ -47,3 +47,58 @@ if (name) {
 } else {
     console.log("Bye");
 }
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script is a quick reference for JavaScript truthy and falsy values.
+In a boolean context (like an if condition), JavaScript coerces values to true or false.
+Knowing which values are truthy and which are falsy is essential for writing robust conditionals.
+
+CODE BREAKDOWN:
+1. if ("hello") ...      — Non-empty string → truthy.
+2. if (42) ...             — Non-zero number → truthy.
+3. if ({}) ...             — Any object, even empty → truthy.
+4. if ([]) ...             — Any array, even empty → truthy.
+5. if ("") ...             — Empty string → falsy.
+6. if (null) ...           — null → falsy.
+7. if (undefined) ...      — undefined → falsy.
+8. if (NaN) ...            — Not-a-Number → falsy.
+9. if (0) ...              — Zero → falsy.
+10. let name = 0; if(name) ... — Demonstrates variable coercion.
+
+KEY CONCEPTS:
+• Type Coercion: JavaScript implicitly converts non-boolean values to boolean in conditions.
+• Truthy: Any value not on the falsy list evaluates to true.
+• Falsy: false, 0, "", null, undefined, NaN, and document.all (legacy).
+
+COMPARISON TABLE — Truthy vs Falsy:
+| Value           | Boolean Result | Category |
+|-----------------|----------------|----------|
+| "hello"         | true           | Truthy   |
+| 42              | true           | Truthy   |
+| {}              | true           | Truthy   |
+| []              | true           | Truthy   |
+| ""              | false          | Falsy    |
+| 0               | false          | Falsy    |
+| null            | false          | Falsy    |
+| undefined       | false          | Falsy    |
+| NaN             | false          | Falsy    |
+
+REAL-WORLD USE CASES:
+• Guard clauses: if (!user) return; — handles null/undefined.
+• Form validation: if (input.value.trim()) { ... }.
+• Feature flags: if (process.env.ENABLE_X) { ... }.
+
+COMMON MISTAKES:
+• Assuming empty object {} or array [] are falsy (they are truthy!).
+• Forgetting that 0 is falsy, causing bugs in numeric checks like if (count) ...
+• Confusing null and undefined; both are falsy but have different semantics.
+
+KEY TAKEAWAY:
+Memorize the six core falsy values. When in doubt, use explicit comparisons
+(e.g., if (name !== null && name !== undefined)) rather than relying solely on truthiness.
+================================================================================
+*/

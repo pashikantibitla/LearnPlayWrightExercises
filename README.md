@@ -31,6 +31,20 @@ This repository is your **week-by-week course companion** for the LearnPlaywrigh
 - **Playwright** — setup, locators, assertions, fixtures, POM, debugging, CI
 - **Modern QA** — Playwright CLI, AI Agents, and MCP for full STLC automation
 
+### 📖 Inline Documentation Enhancement (NEW)
+
+> **Every `.js` file** in this repository now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., `var` vs `let` vs `const`, `for` vs `while`, pure vs impure functions)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.
+
 ---
 
 ## 🗺️ Curriculum Roadmap

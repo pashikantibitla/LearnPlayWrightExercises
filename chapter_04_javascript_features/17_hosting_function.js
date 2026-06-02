@@ -48,3 +48,52 @@ getUserStatus();
 
 // Note: var is function-scoped, so status is hosted to
 // the top of getUserStatus(), NOT the global scope.
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file demonstrates that var hoisting is contained within the function scope.
+var declarations inside a function are hoisted to the TOP of that function, not the global scope.
+This encapsulation is why functions are used to create private variable spaces.
+
+CODE BREAKDOWN
+=====================================
+1. function getUserStatus() { ... }
+   - A new function scope is created.
+2. console.log(status_code); var status_code = "Active";
+   - Inside the function, status_code is hoisted to the top with undefined.
+   - The first log prints undefined; the second log prints "Active".
+3. getUserStatus();
+   - Invokes the function to demonstrate the behavior.
+
+KEY CONCEPTS
+=====================================
+- Function-Scoped Hoisting: var declarations inside a function are hoisted to the top of that function.
+- Hoisting Initialization: Hoisted var variables start as undefined until the assignment line executes.
+- Scope Isolation: Hoisting does not leak var declarations from inside a function to the global scope.
+
+COMPARISON TABLE: Global vs Function Hoisting
+=====================================
+| Location of var  | Hoisted to where?           | Leaks outside? |
+|--------------------|-----------------------------|----------------|
+| Global scope       | Top of global scope         | N/A            |
+| Inside function    | Top of that function only   | No             |
+| Inside block {}    | Top of enclosing function   | Yes            |
+
+REAL-WORLD USE CASES
+=====================================
+- Creating modular code with encapsulated variables.
+- Using IIFE (Immediately Invoked Function Expressions) for privacy.
+- Preventing global namespace pollution in large applications.
+
+COMMON MISTAKES
+=====================================
+- Expecting hoisted vars inside a function to be accessible globally.
+- Forgetting that var hoisting stops at the function boundary.
+- Confusing function-scoped hoisting with block-scoped let/const behavior.
+
+KEY TAKEAWAY
+=====================================
+var hoisting is contained within the function it lives in. Use functions to encapsulate variables and prevent global leaks.
+*/

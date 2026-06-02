@@ -67,3 +67,19 @@ This chapter covers conditional control flow using `if`, `else if`, and `else` s
 - **Logical AND (`&&`):** Both conditions must be true.
 - **Logical OR (`||`):** At least one condition must be true.
 - **Leap Year Rules:** Divisible by 4, not by 100 unless also by 400.
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., truthy vs falsy values, logical operators)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

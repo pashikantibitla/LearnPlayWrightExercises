@@ -62,3 +62,48 @@ if (isLoggedIn) {
 } else {
     console.log("You are not logged in!!");
 }
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script simulates a real-world Role-Based Access Control (RBAC) system using
+nested if-else statements. First it checks if the user is logged in; if true,
+it further inspects the user's role to decide what access to grant.
+
+CODE BREAKDOWN:
+1. let isLoggedIn = true;          — Boolean gatekeeper.
+2. let userRole = "XYZ";           — The role string to evaluate.
+3. Outer if (isLoggedIn) { ... }   — If false, prints "You are not logged in!!".
+4. Inner if-else if-else            — Matches userRole against "admin", "editor", "viewer",
+                                    or defaults to a guest message.
+
+KEY CONCEPTS:
+• Nested Conditionals: One conditional placed inside another.
+• Gatekeeper Pattern: The outer boolean stops deeper evaluation if false.
+• Strict Equality === : Compares both value and type, preventing type coercion bugs.
+
+COMPARISON TABLE — Role vs Access:
+| Role    | Access Level                     |
+|---------|----------------------------------|
+| admin   | Full control                     |
+| editor  | Edit permissions                 |
+| viewer  | Read-only                        |
+| other   | Guest / unknown                  |
+
+REAL-WORLD USE CASES:
+• Dashboard navigation (show/hide menus based on role).
+• API permission middleware (admin vs user endpoints).
+• Content management systems (WordPress, Drupal).
+
+COMMON MISTAKES:
+• Using = instead of === inside the role check.
+• Forgetting the outer else, causing undefined behavior for logged-out users.
+• Deep nesting beyond 2-3 levels hurts readability; consider switch or lookup objects.
+
+KEY TAKEAWAY:
+Use nested if-else for hierarchical decisions. Keep nesting shallow; if it gets too
+deep, refactor into functions or a switch statement.
+================================================================================
+*/

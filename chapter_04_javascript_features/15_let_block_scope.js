@@ -60,3 +60,54 @@ Hello TheTestingAcademy!
 30
 F -> 20
  */
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file demonstrates how let respects block boundaries and allows variable shadowing.
+A let variable declared inside a function or an if block does NOT affect the outer scope.
+Each pair of curly braces creates a new scope for let, keeping variables isolated.
+
+CODE BREAKDOWN
+=====================================
+1. let a = 10; // Global Scope
+   - Outer variable a is set to 10.
+2. function printHello() { let a = 20; ... }
+   - Function-local a shadows the global a without changing it.
+3. if (true) { let a = 30; }
+   - Block-scoped a = 30 lives only inside the if block.
+4. console.log("G ->", a) prints 10
+   - Confirms the global a was never modified.
+
+KEY CONCEPTS
+=====================================
+- Block Scoping with let: Each {} creates a new scope for let.
+- Shadowing: An inner let can have the same name as an outer variable.
+- Scope Isolation: Changes to an inner let do not leak outside its block.
+
+COMPARISON TABLE: let vs var in Nested Blocks
+=====================================
+| Scenario                    | let result        | var result          |
+|-----------------------------|-------------------|---------------------|
+| Variable inside if block    | Isolated to block | Leaks to function   |
+| Variable inside function    | Isolated to function| Isolated to function|
+| Shadowing outer variable    | Allowed, safe     | Allowed, confusing  |
+| After block ends            | Clean, no trace   | Variable still exists|
+
+REAL-WORLD USE CASES
+=====================================
+- Safe temporary variables inside loops and conditionals.
+- Large functions where you want to avoid variable name collisions.
+- Iteration variables that must not interfere with outer state.
+
+COMMON MISTAKES
+=====================================
+- Thinking an inner let changes the outer variable (it does not).
+- Confusing shadowing with overwriting.
+- Using var instead of let and accidentally leaking block variables.
+
+KEY TAKEAWAY
+=====================================
+let keeps variables exactly where you declare them. Use it to write predictable, leak-free code.
+*/

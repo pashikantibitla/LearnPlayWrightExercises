@@ -45,3 +45,48 @@ if ((username === "Dev" && password === "secure123") && isAccountLocked) {
 } else {
     console.log("not allwed to enter");
 }
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script combines logical AND (&&) with an if-else statement to simulate a login gate.
+A user is granted access only when the username, password, and account lock status all
+satisfy the required conditions.
+
+CODE BREAKDOWN:
+1. let username = "Dev";                     — Hard-coded credential 1.
+2. let password = "secure123";               — Hard-coded credential 2.
+3. let isAccountLocked = true;               — Status flag (true = locked here).
+4. if ((username === "Dev" && password === "secure123") && isAccountLocked) { ... }
+   — All three sub-conditions must be true for entry.
+
+KEY CONCEPTS:
+• Logical AND && : Returns true only if both operands are truthy.
+• Compound Condition: Multiple checks wrapped in one expression.
+• Short-Circuiting: If the left side of && is false, the right side is not evaluated.
+
+COMPARISON TABLE — Logical Operators:
+| Operator | Name        | True When                         |
+|----------|-------------|-----------------------------------|
+| &&       | AND         | Both sides are true               |
+| ||       | OR          | At least one side is true         |
+| !        | NOT         | The operand is false              |
+
+REAL-WORLD USE CASES:
+• Multi-factor authentication checks.
+• Form validation (all fields required).
+• Feature toggles (feature enabled AND user has permission).
+
+COMMON MISTAKES:
+• Using a single & (bitwise AND) instead of &&.
+• Forgetting parentheses, changing evaluation order.
+• Confusing the lock flag (true = locked in this example, which denies access when combined
+  incorrectly). Usually isAccountLocked should be false to allow entry.
+
+KEY TAKEAWAY:
+Group related conditions with parentheses and use && when every requirement must be met.
+Double-check the semantics of boolean flags so true/false maps to the intended meaning.
+================================================================================
+*/

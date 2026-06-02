@@ -45,3 +45,45 @@ if (num % 2 === 0) {
 } else {
     console.log(num + " is Odd");
 }
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script determines whether a number is even or odd using the modulo operator (%).
+If the remainder of dividing by 2 is 0, the number is even; otherwise it is odd.
+
+CODE BREAKDOWN:
+1. let num = 7;              — The number to test.
+2. if (num % 2 === 0) { ... } — Checks divisibility by 2.
+3. console.log(num + " is Even") — Executed for even numbers.
+4. else { console.log(num + " is Odd") } — Executed for odd numbers.
+
+KEY CONCEPTS:
+• Modulo % : Returns the remainder of integer division.
+• Binary Decision: Exactly two mutually exclusive outcomes.
+• String Concatenation: The + operator combines a number and a string.
+
+COMPARISON TABLE — Number Types:
+| Check            | Expression        | True For              |
+|------------------|-------------------|-----------------------|
+| Even             | num % 2 === 0     | 0, 2, 4, 6, ...       |
+| Odd              | num % 2 !== 0     | 1, 3, 5, 7, ...       |
+| Divisible by N   | num % N === 0     | Multiples of N        |
+
+REAL-WORLD USE CASES:
+• Alternating row colors in tables ( zebra striping ).
+• Batch processing (process every Nth item).
+• Game logic (turn-based systems).
+
+COMMON MISTAKES:
+• Using a single = in the condition (num % 2 = 0) causes a syntax or runtime error.
+• Forgetting that negative numbers modulo 2 can be 0 or -0; still even, but be aware.
+• Using floating-point numbers with % can yield unexpected remainders.
+
+KEY TAKEAWAY:
+The modulo operator is your go-to tool for cyclic or divisibility checks.
+Always pair it with strict equality (===) for reliable results.
+================================================================================
+*/

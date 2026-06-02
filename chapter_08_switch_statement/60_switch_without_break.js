@@ -59,3 +59,46 @@ switch (day) {
     default:
         console.log("Invalid day value");
 }
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script demonstrates the switch statement's fall-through behavior when break is omitted.
+Once a case matches, execution continues through all subsequent cases until the end of
+the switch block or until a break is encountered.
+
+CODE BREAKDOWN:
+1. let day = 2;                        — The switch expression evaluates to 2.
+2. case 0: ...                         — Skipped because day !== 0.
+3. case 1: ...                         — Skipped because day !== 1.
+4. case 2: console.log("Tuesday ...") — Matches; execution begins here.
+5. case 3 through default              — All subsequent cases execute because there is no break.
+
+KEY CONCEPTS:
+• Fall-Through: Intentional or accidental execution into the next case.
+• Strict Equality: switch uses === for matching.
+• Default: Runs when no case matches; here it also runs after fall-through.
+
+COMPARISON TABLE — With break vs Without break:
+| Scenario            | Output for day = 2                     |
+|---------------------|----------------------------------------|
+| With break          | Only "Tuesday — Development"             |
+| Without break       | Tuesday, Wed, Thu, Fri, Sat, + default |
+
+REAL-WORLD USE CASES:
+• Multi-step cumulative actions (e.g., "execute step 2 and all following steps").
+• Season grouping (case 12, 1, 2 → Winter) where intentional fall-through is useful.
+• Deliberate execution chaining in state machines.
+
+COMMON MISTAKES:
+• Forgetting break when you actually want only one case to run.
+• Assuming switch behaves like if-else by default.
+• Omitting break in the last case is harmless but inconsistent style.
+
+KEY TAKEAWAY:
+Omit break only when fall-through is intentional. Always document intentional fall-through
+with a comment so future maintainers understand the design.
+================================================================================
+*/

@@ -42,3 +42,19 @@ This chapter introduces the `var` keyword for variable declaration and reassignm
 - **Variable Reassignment:** Changing the value held by a variable after initial declaration.
 - **Function Scope:** `var` is scoped to the nearest function, not block.
 - **Hoisting:** `var` declarations are moved to the top of their scope during compilation.
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., `var` vs `let` vs `const`)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

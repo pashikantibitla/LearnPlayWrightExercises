@@ -70,3 +70,47 @@ switch (day) {
     default:
         console.log("Invalid day value");
 }
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script shows the standard, safe way to write a switch statement: each case ends
+with a break, and a default case handles any unmatched values. This prevents fall-through
+and ensures graceful handling of unexpected input.
+
+CODE BREAKDOWN:
+1. let day = 10;                     — Expression to match.
+2. case 0: ... break;                 — Sunday; break exits the switch.
+3. case 1: ... break;                 — Monday; break exits.
+...
+4. default: console.log("Invalid day value"); — Runs because 10 is not 0-6.
+
+KEY CONCEPTS:
+• break: Immediately exits the nearest switch (or loop).
+• default: The catch-all when no case matches.
+• Strict Equality: day is compared to each case value using ===.
+
+COMPARISON TABLE — if-else vs switch for Day Mapping:
+| Approach     | Readability (7 cases) | Fall-Through Risk | Best For          |
+|--------------|----------------------:|------------------:|-------------------|
+| if-else-if   | Medium                | None              | Ranges, complex   |
+| switch       | High                  | Yes (if no break) | Discrete values   |
+
+REAL-WORLD USE CASES:
+• Day-of-week routing in scheduling apps.
+• Menu option selection in CLI tools.
+• Mapping error codes to user-friendly messages.
+
+COMMON MISTAKES:
+• Forgetting break after a case, causing multiple messages.
+• Using variable case values (switch evaluates case labels at compile time conceptually,
+  though JS allows expressions in recent versions).
+• Putting default at the top without break, which can block subsequent cases.
+
+KEY TAKEAWAY:
+Always include break in every case and a default at the end. This is the safest,
+most readable pattern for switch statements.
+================================================================================
+*/

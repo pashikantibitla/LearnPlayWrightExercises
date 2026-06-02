@@ -58,3 +58,57 @@ function say() {
 } //function is called again
 say();
 say();
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file explains the const keyword: block-scoped, must be initialized at declaration,
+and cannot be reassigned or redeclared in the same scope.
+However, const and let CAN be redeclared in a different block or function scope.
+The file also contrasts const immutability with let reassignment.
+
+CODE BREAKDOWN
+=====================================
+1. const BASE_URL = "https://app.thetestingacademy.com";
+   - Declares a constant that must have an initial value.
+2. let name = "pending"; name = "done";
+   - let allows reassignment, unlike const.
+3. { let name = "Dutta"; }
+   - Block scope allows redeclaration of let in a nested block.
+4. function say() { let name = "Dutta"; }
+   - Function scope also allows redeclaration.
+
+KEY CONCEPTS
+=====================================
+- const Immutability: The binding is fixed; the identifier cannot point to a new value.
+- Initialization Requirement: const declarations MUST include an initializer.
+- Scope-based Redeclaration: let and const can be redeclared in a different scope.
+- Functions vs Blocks: Functions can be called repeatedly; plain blocks execute once.
+
+COMPARISON TABLE: const vs let
+=====================================
+| Feature          | const             | let               |
+|------------------|-------------------|-------------------|
+| Scope            | Block-scoped      | Block-scoped      |
+| Redeclaration    | Not Allowed       | Not Allowed       |
+| Reassignment     | Not Allowed       | Allowed           |
+| Must Initialize  | Yes               | No                |
+| Hoisting         | TDZ               | TDZ               |
+
+REAL-WORLD USE CASES
+=====================================
+- API base URLs and environment configuration values.
+- DOM element references that should never be reassigned.
+- Mathematical constants like PI or MAX_RETRY_COUNT.
+
+COMMON MISTAKES
+=====================================
+- Declaring const without an initializer (SyntaxError).
+- Trying to reassign a const primitive value (TypeError).
+- Thinking const makes objects deeply immutable (it only freezes the binding).
+
+KEY TAKEAWAY
+=====================================
+Use const by default for values that should never be rebound. It communicates your intent clearly and prevents accidental reassignment.
+*/

@@ -81,3 +81,64 @@ const payload = `{
   "timestamp": "${new Date().toISOString()}"
 }`;
 console.log(payload);
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file demonstrates template literals (backtick strings) in JavaScript.
+Template literals, introduced in ES6, allow variable interpolation, expression evaluation,
+and multi-line strings without explicit newline characters or concatenation.
+They are invaluable for building dynamic URLs, log messages, JSON payloads, and Playwright selectors.
+
+CODE BREAKDOWN
+=====================================
+1. let fullname = `Hi ${firstname} Dutta`;
+   - Basic variable interpolation using ${}.
+2. const apiUrl = `https://api-${env}.tekion.com/users/${userId}`;
+   - Dynamic URL construction with multiple interpolated values.
+3. Playwright selector example (commented):
+   - await page.locator(`[data-row="${rowIndex}"] [data-col="${columnName}"]`).click();
+   - Template literals make complex dynamic selectors readable.
+4. console.log(`[${status}] ${testName} completed in ${duration}s`);
+   - Formatted log messages with multiple embedded variables.
+5. JSON payload with new Date().toISOString() inside ${}:
+   - Expressions, not just variables, can be interpolated.
+
+KEY CONCEPTS
+=====================================
+- Template Literal: A string enclosed in backticks (`) supporting embedded expressions.
+- Variable Interpolation: Injecting variable values directly into a string using ${variableName}.
+- Expression Interpolation: Evaluating any valid JS expression inside ${}.
+- Multi-Line Strings: Backticks allow strings to span multiple lines naturally.
+- const vs let: const is used for values that should not be reassigned; let for values that may change.
+
+COMPARISON TABLE: Template Literal vs Regular String
+=====================================
+| Feature              | Regular String (''/"") | Template Literal (``)     |
+|----------------------|-------------------------|--------------------------|
+| Simple text          | Yes                     | Yes                      |
+| Variable injection   | No                      | Yes (${var})             |
+| Multi-line           | No (needs \n or +)      | Yes (preserves newlines) |
+| Expression inside    | No                      | Yes (${a + b})           |
+| Quote escaping       | Often needed            | Less often needed        |
+
+REAL-WORLD USE CASES
+=====================================
+- Building dynamic API URLs with environment and ID segments.
+- Creating formatted log messages for test automation frameworks.
+- Generating dynamic CSS selectors or XPath expressions in Playwright/Selenium.
+- Constructing JSON payloads with embedded timestamps and computed values.
+- Writing multi-line SQL queries or HTML templates in code.
+
+COMMON MISTAKES
+=====================================
+- Using regular quotes ('' or "") with ${} syntax (results in literal ${} characters).
+- Forgetting backticks when switching from concatenation to interpolation.
+- Not escaping backticks inside template literals (use backslash \`).
+- Introducing unwanted whitespace in multi-line template literals.
+
+KEY TAKEAWAY
+=====================================
+Template literals are the modern standard for building dynamic strings. Use backticks whenever you need variables, expressions, or multiple lines inside a string.
+*/

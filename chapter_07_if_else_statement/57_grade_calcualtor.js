@@ -44,3 +44,50 @@ if (marks >= 90) {
 } else {
     console.log("Grade: Fail");
 }
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script maps numeric marks to letter grades using an if-else-if ladder.
+It is a classic example of threshold-based classification and demonstrates
+the importance of ordering conditions correctly.
+
+CODE BREAKDOWN:
+1. let marks = 85;               — Initialize marks.
+2. if (marks >= 90) { ... }      — A grade threshold.
+3. else if (marks >= 80) { ... } — B grade threshold.
+4. else if (marks >= 70) { ... } — C grade threshold.
+5. else if (marks >= 60) { ... } — D grade threshold.
+6. else { ... }                   — Fail for anything below 60.
+
+KEY CONCEPTS:
+• Threshold Logic: >= includes the boundary value in the higher category.
+• Top-Down Evaluation: The first true condition wins; subsequent branches are ignored.
+• Fallback: The final else catches all unmatched (failing) scores.
+
+COMPARISON TABLE — Grade Mapping:
+| Marks Range | Grade |
+|-------------|-------|
+| 90 - 100    | A     |
+| 80 - 89     | B     |
+| 70 - 79     | C     |
+| 60 - 69     | D     |
+| 0 - 59      | Fail  |
+
+REAL-WORLD USE CASES:
+• School / university grading portals.
+• Performance rating systems (Exceeds, Meets, Needs Improvement).
+• Health risk categorization (BMI ranges).
+
+COMMON MISTAKES:
+• Writing >= 60 before >= 90; the lower threshold would match first and assign a D.
+• Forgetting the final else, leaving scores unhandled.
+• Using == instead of === when comparing (not an issue with numbers, but a habit to avoid).
+
+KEY TAKEAWAY:
+Arrange thresholds in descending order and always provide a catch-all else.
+Test boundary values (e.g., 89, 90, 59, 60) to verify correctness.
+================================================================================
+*/

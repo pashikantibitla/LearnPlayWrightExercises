@@ -68,3 +68,57 @@ switch (status) {
         console.log("0 matched");
         break;
 }
+
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script highlights that JavaScript switch statements use strict equality (===)
+for comparison, not loose equality (==). Therefore, a string "5" will not match
+a numeric case 5, and the number 0 will not match the boolean false.
+
+CODE BREAKDOWN:
+1. let value = "5";                — A string.
+2. console.log(typeof value);      — Confirms "string".
+3. switch (value) { case 5: ... case "5": ... }
+   — case 5 (number) does NOT match.
+   — case "5" (string) DOES match.
+4. let status = 0;                 — A number.
+5. console.log(typeof status);     — Confirms "number".
+6. switch (status) { case false: ... case 0: ... }
+   — case false (boolean) does NOT match.
+   — case 0 (number) DOES match.
+
+KEY CONCEPTS:
+• Strict Equality === : Checks both value and type.
+• typeof Operator: Returns the primitive type of a variable as a string.
+• Type Coercion Avoidance: switch does not coerce types, unlike ==.
+
+COMPARISON TABLE — == vs === vs switch:
+| Expression          | Result | Reason                          |
+|---------------------|--------|---------------------------------|
+| "5" == 5            | true   | Loose equality coerces string   |
+| "5" === 5           | false  | Strict equality, types differ   |
+| switch("5") case 5: | false  | switch uses === internally      |
+| 0 == false          | true   | Loose equality coerces boolean  |
+| 0 === false         | false  | Strict equality, types differ   |
+| switch(0) case false:| false | switch uses === internally      |
+
+REAL-WORLD USE CASES:
+• Validating API payloads where type safety matters.
+• Parsing query parameters (always strings) against numeric constants.
+• Feature flags where boolean and numeric 0/1 must be distinguished.
+
+COMMON MISTAKES:
+• Expecting "5" to match case 5 inside a switch.
+• Using typeof incorrectly (e.g., typeof [] returns "object", not "array").
+• Confusing 0, false, and "" because they are all falsy but distinct in strict equality.
+
+KEY TAKEAWAY:
+Always verify types when using switch. If inputs come from external sources (APIs, forms),
+convert them to the expected type before switching, or ensure case labels match both
+value and type precisely.
+================================================================================
+*/

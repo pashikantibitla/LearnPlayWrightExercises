@@ -53,3 +53,19 @@ This chapter covers the rules for naming variables (identifiers), naming convent
   - `snake_case` — constants and config (`MAX_SIZE`)
   - `SCREAMING_SNAKE_CASE` — constants (`API_KEY`)
 - **Comments:** Single-line `//` and multi-line `/* */` for code documentation.
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., naming conventions, comment styles)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

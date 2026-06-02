@@ -350,3 +350,73 @@ console.log(numbers);             // Output: [1, 2, 3, 4]
 */
 
 console.log("\n========== END OF HOISTING RESEARCH ==========");
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This comprehensive research file explores hoisting behavior for var, let, const, and functions.
+It contains 7 parts: var hoisting, let hoisting (with TDZ), const hoisting, function hoisting,
+a comparison table, practical demonstrations, and best practices.
+The file is an excellent reference for understanding JavaScript's two-phase execution model.
+
+CODE BREAKDOWN
+=====================================
+1. PART 1: var Hoisting
+   - var is hoisted and initialized with undefined.
+   - Access before declaration returns undefined, not an error.
+   - var inside blocks leaks to the enclosing function.
+2. PART 2: let Hoisting
+   - let is hoisted but NOT initialized; it enters the TDZ.
+   - Access before declaration throws ReferenceError.
+   - let is block-scoped and safe for loops and conditionals.
+3. PART 3: const Hoisting
+   - const behaves like let but MUST be initialized at declaration.
+   - Also has TDZ and is block-scoped.
+4. PART 4: Function Hoisting
+   - Function declarations are fully hoisted (body included).
+   - Function expressions assigned to variables follow variable hoisting rules.
+5. PART 5: Comparison Table
+   - Summarizes hoisting, scope, redeclaration, and reassignment rules.
+6. PART 6: Practical Examples
+   - Loop closure bugs with var vs let, TDZ demonstrations, const mutability.
+7. PART 7: Best Practices
+   - Prefer const, use let for reassignment, avoid var, declare at top of scope.
+
+KEY CONCEPTS
+=====================================
+- Hoisting: JavaScript moves declarations to the top of their scope during compilation.
+- Temporal Dead Zone (TDZ): The span from block entry to let/const declaration where access is illegal.
+- Function Declaration vs Expression: Declarations are fully hoisted; expressions follow variable rules.
+- const Mutability: const prevents reassignment of the binding but does not make objects/arrays immutable.
+
+COMPARISON TABLE: Quick Reference
+=====================================
+| Feature              | var                    | let                    | const                  |
+|----------------------|------------------------|------------------------|------------------------|
+| Hoisted?             | YES                    | YES                    | YES                    |
+| Initialized when hoisted? | YES (undefined)   | NO (TDZ)               | NO (TDZ)               |
+| Scope                | Function-scoped        | Block-scoped           | Block-scoped           |
+| Can redeclare?       | YES                    | NO                     | NO                     |
+| Can reassign?        | YES                    | YES                    | NO                     |
+| Must initialize?     | NO                     | NO                     | YES                    |
+| Access before decl?  | undefined              | ReferenceError         | ReferenceError         |
+
+REAL-WORLD USE CASES
+=====================================
+- Interview preparation for JavaScript roles.
+- Debugging closure bugs in loops with setTimeout.
+- Choosing the right declaration keyword for configuration, counters, and constants.
+- Refactoring legacy var-based code to modern ES6+ standards.
+
+COMMON MISTAKES
+=====================================
+- Using var in loops with asynchronous callbacks (all callbacks share the same variable).
+- Forgetting that const objects can still be mutated (push, pop, property changes).
+- Calling function expressions before their assignment line.
+- Assigning undefined manually instead of using null for intentional emptiness.
+
+KEY TAKEAWAY
+=====================================
+Master hoisting and the Temporal Dead Zone to write bug-free JavaScript. Prefer const, use let when reassignment is needed, and avoid var entirely in modern code.
+*/

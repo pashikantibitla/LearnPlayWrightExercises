@@ -118,3 +118,63 @@ console.log("New way:", newWay);
 // ============================================================
 // END
 // ============================================================
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file compares single quotes, double quotes, and backticks (template literals) in JavaScript.
+Single and double quotes are functionally identical for simple static strings.
+Backticks are special: they enable variable interpolation, expression evaluation, and multi-line text.
+The file also contrasts the old concatenation style with the modern template literal approach.
+
+CODE BREAKDOWN
+=====================================
+1. let single = 'Hello World'; and let double = "Hello World";
+   - Both produce the same simple static string.
+2. let greeting = `Hello, my name is ${name} and I am ${age} years old.`;
+   - Backtick string with variable interpolation.
+3. let multiLine = `Line 1\n  Line 2\n  Line 3`;
+   - Multi-line string using backticks without explicit \n or concatenation.
+4. let sum = `10 + 20 = ${10 + 20}`;
+   - Expression evaluation directly inside the string.
+5. Old way vs New way product/price example:
+   - Demonstrates how backticks eliminate messy + concatenation.
+
+KEY CONCEPTS
+=====================================
+- Single-Quoted String: Plain string literal; no interpolation allowed.
+- Double-Quoted String: Plain string literal; behavior identical to single quotes.
+- Backtick / Template Literal: Supports ${var}, ${expression}, and multi-line text.
+- String Concatenation (old way): Combining strings with + operator; verbose and error-prone.
+- Expression Inside ${}: Any valid JavaScript expression can be embedded in a template literal.
+
+COMPARISON TABLE: Quotes vs Backticks
+=====================================
+| Feature              |  '' or ""  |  ``                        |
+|----------------------|------------|----------------------------|
+| Simple text          |     Yes    |   Yes                      |
+| Variable injection   |     No     |   Yes -> ${var}            |
+| Multi-line           |     No     |   Yes (preserves newlines) |
+| Expression inside    |     No     |   Yes -> ${a + b}          |
+| Readability          | Good       | Better for dynamic strings |
+
+REAL-WORLD USE CASES
+=====================================
+- Email templates with personalized names and dates (template literals).
+- Dynamic SQL queries with injected table names or filters.
+- HTML generation with embedded class names and content.
+- Log messages that include status, duration, and timestamps.
+- Configuration strings that combine environment names and hostnames.
+
+COMMON MISTAKES
+=====================================
+- Using + concatenation when template literals would be cleaner and safer.
+- Trying to interpolate variables inside regular quotes (results in literal ${var}).
+- Losing indentation control in multi-line template literals.
+- Forgetting that backticks inside template literals must be escaped.
+
+KEY TAKEAWAY
+=====================================
+Use backticks for any string that needs variables, expressions, or multiple lines. Use regular quotes for simple, static strings. Modern JavaScript favors template literals for readability and maintainability.
+*/

@@ -68,3 +68,19 @@ This chapter covers everything about JavaScript arrays — creation, access, add
 - **Template Literals:** Often used with `join()` and `map()` to build dynamic strings from arrays.
 - **Lexicographic Sorting:** Default `sort()` converts elements to strings before comparing.
 - **Numeric Sorting:** Requires a compare function `(a, b) => a - b` for ascending order.
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., `push` vs `pop` vs `shift` vs `unshift`, `slice` vs `splice`, `map` vs `filter` vs `reduce`)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

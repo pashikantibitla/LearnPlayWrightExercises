@@ -48,3 +48,52 @@ console.log(greeting);
 console.log(a);
 var a = "Pramod";
 console.log(a);
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file demonstrates var hoisting, JavaScript's behavior of moving declarations to the top of their scope.
+When the JS engine compiles code, it first scans for var declarations and initializes them with undefined.
+Only in the execution phase does the assignment happen at its original line.
+
+CODE BREAKDOWN
+=====================================
+1. console.log(greeting); var greeting = "Hello";
+   - greeting is hoisted with value undefined, so first log prints undefined.
+   - After the assignment line, greeting becomes "Hello".
+2. console.log(a); var a = "Pramod";
+   - Same pattern: first log is undefined, second log is "Pramod".
+
+KEY CONCEPTS
+=====================================
+- Hoisting: Declarations are moved to the top of the scope during compilation.
+- undefined: The default value assigned to hoisted var variables before their assignment line.
+- JIT Compilation: JavaScript engines compile just-in-time in two phases.
+- Two-Phase Execution: Phase 1 scans declarations; Phase 2 executes line-by-line.
+
+COMPARISON TABLE: Hoisting Behavior
+=====================================
+| Declaration    | Hoisted? | Initial Value | Usable before line? |
+|----------------|----------|---------------|---------------------|
+| var            | Yes      | undefined     | Yes (but undefined) |
+| let            | Yes      | TDZ (none)    | No (ReferenceError) |
+| const          | Yes      | TDZ (none)    | No (ReferenceError) |
+| function       | Yes      | Full body     | Yes                 |
+
+REAL-WORLD USE CASES
+=====================================
+- Understanding why variables can be referenced before their declaration in legacy code.
+- Debugging undefined values that appear unexpectedly.
+- Answering common JavaScript interview questions.
+
+COMMON MISTAKES
+=====================================
+- Relying on hoisting and using variables before their declaration.
+- Thinking undefined means "not declared" — it means "declared but not assigned yet".
+- Expecting let and const to behave the same way as var with hoisting.
+
+KEY TAKEAWAY
+=====================================
+Hoisting moves declarations, not assignments. Always declare variables at the top of their scope to avoid confusion.
+*/

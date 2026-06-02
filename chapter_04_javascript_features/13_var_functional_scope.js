@@ -116,5 +116,56 @@ the value of b in if block:  30
 F -> 30
 */
 
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file demonstrates var function-scoping, variable shadowing, and global vs local scope.
+var variables are confined to the function they are declared in, not the block.
+A local var can shadow a global variable of the same name without affecting it.
+Crucially, var ignores block boundaries like if {} and for {}, leaking to the enclosing function.
 
+CODE BREAKDOWN
+=====================================
+1. var a = "tyu@er.com"; global scope
+   - Declared outside any function, accessible everywhere.
+2. print_hello(a) and print_character_a(a)
+   - Functions receive the global a as a parameter.
+3. print_string() with var a = "hello mounika..."
+   - Local a shadows the global a inside this function.
+4. print_a_variable_value() with var b and if block
+   - var b = 30 inside the if block OVERWRITES the function's b.
+   - This proves var does NOT respect block boundaries.
 
+KEY CONCEPTS
+=====================================
+- Global Scope: Variables declared outside functions are accessible globally.
+- Local/Function Scope: var inside a function is local to that function.
+- Shadowing: A local declaration hides a global variable of the same name.
+- var Block Leakage: var ignores block boundaries and leaks to the enclosing function.
+
+COMPARISON TABLE: Global vs Local var
+=====================================
+| Scenario                   | Global var          | Local var               |
+|----------------------------|---------------------|-------------------------|
+| Declared where?            | Outside functions   | Inside a function       |
+| Accessible where?          | Everywhere          | Only inside that function|
+| Can it be shadowed?        | Yes                 | No (it IS the shadow)   |
+| Leaks out of if/for blocks?| N/A                 | Yes                     |
+
+REAL-WORLD USE CASES
+=====================================
+- Understanding legacy codebases that still use var.
+- Debugging scope-related bugs in older JavaScript applications.
+- Refactoring var to let/const in modern code.
+
+COMMON MISTAKES
+=====================================
+- Assuming var inside an if-block is private to that block.
+- Accidentally shadowing a global variable and causing confusion.
+- Not realizing for-loop var counters leak outside the loop.
+
+KEY TAKEAWAY
+=====================================
+var is function-scoped and leaks out of blocks. Modern JavaScript prefers let and const to avoid these surprises.
+*/

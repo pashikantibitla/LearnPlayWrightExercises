@@ -71,3 +71,19 @@ This chapter covers all loop structures in JavaScript — `for`, `while`, `do-wh
 - **Infinite Loops:** Occur when the loop condition never becomes false.
 - **Break & Continue:** Used to control flow inside loops — exit early or skip an iteration.
 - **Counter Variables:** Naming conventions (`i`, `j`, `k`) and scope considerations.
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., `for` vs `while` vs `do-while`, `break` vs `continue`)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

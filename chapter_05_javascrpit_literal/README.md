@@ -61,3 +61,19 @@ This chapter covers all forms of literals in JavaScript — the raw values you w
 - **Template Literal Interpolation:** `` `${variable}` `` for embedding expressions inside strings.
 - **null vs undefined:** `null` is developer-set empty; `undefined` is JS-set uninitialized.
 - **typeof null === "object":** A 26-year-old JavaScript bug preserved for backward compatibility.
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., string quote styles, number formats, `null` vs `undefined`)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

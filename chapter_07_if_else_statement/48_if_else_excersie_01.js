@@ -37,3 +37,50 @@ if (age > 18) {
 } else {
     console.log("You are not allowed  to vote!")
 }
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script demonstrates the most fundamental form of conditional logic in JavaScript:
+the if-else statement. It checks whether a person's age is above the voting threshold (18)
+and prints a corresponding eligibility message.
+
+CODE BREAKDOWN:
+1. let age = 20;          — Declares a block-scoped variable and initializes it to 20.
+2. if (age > 18) { ... }  — Evaluates the condition. Because 20 > 18 is true, the if block runs.
+3. console.log(...)       — Outputs "You are allowed to vote!" to the console.
+4. else { ... }           — Skipped entirely because the condition was true.
+
+KEY CONCEPTS:
+• Condition: An expression that resolves to true or false (a boolean).
+• Block: Curly braces {} group multiple statements; here each branch has one statement.
+• Comparison Operator > : Returns true when the left operand is greater than the right.
+
+COMPARISON TABLE — if-else vs switch:
+|---------------------|-----------------------------------|-----------------------------------|
+| Feature             | if-else                           | switch                            |
+|---------------------|-----------------------------------|-----------------------------------|
+| Best for            | Ranges, complex conditions        | Discrete, exact values            |
+| Syntax style        | Boolean expressions               | Strict equality (===) matching    |
+| Readability         | Great for few branches            | Great for many constant cases     |
+| Fall-through        | Not applicable                    | Occurs when break is omitted      |
+|---------------------|-----------------------------------|-----------------------------------|
+
+REAL-WORLD USE CASES:
+• Age verification for restricted content (alcohol, gambling, voting).
+• Minimum order value checks in e-commerce.
+• Login status checks before showing protected UI.
+
+COMMON MISTAKES:
+• Using a single = (assignment) instead of === or > in the condition.
+• Forgetting curly braces when adding a second statement to a branch.
+• Not handling the edge case where age exactly equals 18 (should use >=).
+
+KEY TAKEAWAY:
+Master the if-else structure first; it is the backbone of decision-making in code.
+Always pay attention to boundary values (e.g., 18 in this example) and use the
+correct comparison operator for the requirement.
+================================================================================
+*/

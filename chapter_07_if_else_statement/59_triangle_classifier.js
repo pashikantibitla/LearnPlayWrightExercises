@@ -122,3 +122,53 @@ console.log(`Result: ${classifyTriangle(a, b, c)}\n`);
 a = 7; b = 3; c = 7;
 console.log(`Sides: ${a}, ${b}, ${c}`);
 console.log(`Result: ${classifyTriangle(a, b, c)}\n`);
+
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script defines a reusable function that classifies triangles based on side lengths.
+It first validates the inputs using the triangle inequality theorem, then applies
+if-else-if logic to categorize the triangle as Equilateral, Isosceles, or Scalene.
+
+CODE BREAKDOWN:
+1. function classifyTriangle(side1, side2, side3) { ... }   — Function declaration.
+2. Validation 1: side1 <= 0 ...                              — Rejects non-positive sides.
+3. Validation 2: (side1 + side2 <= side3) ...                 — Enforces triangle inequality.
+4. if (side1 === side2 && side2 === side3)                    — All sides equal → Equilateral.
+5. else if (side1 === side2 || side2 === side3 || side1 === side3)
+                                                              — Exactly two sides equal → Isosceles.
+6. else                                                       — No sides equal → Scalene.
+7. Test cases                                                — Demonstrate valid and invalid inputs.
+
+KEY CONCEPTS:
+• Function Encapsulation: Reusable logic wrapped in a named block.
+• Input Validation: Fail fast with clear error messages for bad data.
+• Triangle Inequality: Sum of any two sides must exceed the third.
+• Sequential Classification: if-else-if ensures only one category is chosen.
+
+COMPARISON TABLE — Triangle Types:
+| Type        | Condition                              | Example (a,b,c) |
+|-------------|----------------------------------------|-----------------|
+| Equilateral | side1 === side2 && side2 === side3     | (5,5,5)         |
+| Isosceles   | Exactly two sides equal                | (5,5,8)         |
+| Scalene     | All sides different                    | (3,4,5)         |
+| Invalid     | Violates positivity or inequality      | (-3,4,5)        |
+
+REAL-WORLD USE CASES:
+• Geometry tutoring software.
+• CAD / 3D modeling input validation.
+• Game physics (collision shape classification).
+
+COMMON MISTAKES:
+• Checking equality before validating sides, causing incorrect classification for invalid input.
+• Using == instead of === (type coercion risk with strings).
+• Forgetting that the sum must be *strictly* greater, not equal, to the third side.
+
+KEY TAKEAWAY:
+Always validate inputs before applying business logic. Encapsulate classification rules
+in functions for reusability, and test with both valid and invalid data.
+================================================================================
+*/

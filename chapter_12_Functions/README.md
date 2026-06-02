@@ -175,3 +175,19 @@ This chapter covers JavaScript functions in depth — declarations, expressions,
 | **Side Effects** | None — does not change anything outside itself. | Yes — console.log, DOM manipulation, API calls. |
 | **Return Type** | Predictable and deterministic. | May vary even with identical inputs. |
 | **Example** | `calculatePassRate(total, passed)` | `isPassing(score)` (depends on external `threshold`) |
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., function declaration vs expression, arrow vs normal function, pure vs impure, rest vs spread)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

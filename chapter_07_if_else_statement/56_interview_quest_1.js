@@ -33,3 +33,44 @@
 let x = 10;
 if (x > 5)
     console.log("x is big");
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script demonstrates that JavaScript allows an if statement to execute a single
+statement without curly braces. While valid syntax, it is generally discouraged in
+production code because it increases the risk of bugs during maintenance.
+
+CODE BREAKDOWN:
+1. let x = 10;              — Declare and initialize x.
+2. if (x > 5)               — Condition evaluates to true.
+3.     console.log("x is big"); — The single statement executed because the condition is true.
+
+KEY CONCEPTS:
+• Statement vs Block: A block is wrapped in {}; a single statement is not required to be.
+• Implied Block: The next statement after the if is treated as the body.
+• Interview Trap: Many candidates assume braces are mandatory.
+
+COMPARISON TABLE — Braces vs No Braces:
+| Style          | Valid? | Risk Level | Recommendation         |
+|----------------|--------|------------|------------------------|
+| With braces    | Yes    | Low        | Always recommended     |
+| Without braces | Yes    | High       | Avoid in real projects |
+
+REAL-WORLD USE CASES:
+• Quick debugging snippets.
+• One-liner guard clauses (though modern linters still prefer braces).
+• Code golf or minified code.
+
+COMMON MISTAKES:
+• Adding a second statement below the first, expecting it to also be conditional;
+  only the immediate next statement is bound to the if.
+• Misindenting the next line, causing visual confusion.
+
+KEY TAKEAWAY:
+Always use curly braces for if-else bodies, even when there is only one statement.
+It prevents future bugs and makes the code easier to refactor.
+================================================================================
+*/

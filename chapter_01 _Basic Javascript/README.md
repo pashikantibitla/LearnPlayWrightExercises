@@ -66,3 +66,19 @@ This chapter covers the absolute fundamentals of JavaScript — writing your fir
 - **Loops:** Using `for` loops to repeat actions.
 - **Environment Check:** Using `process.*` properties to verify Node.js setup.
 - **Hot Code / JIT:** Understanding that V8 optimizes frequently-called functions.
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., `var` vs `let`, function vs method)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

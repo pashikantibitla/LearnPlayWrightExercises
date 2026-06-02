@@ -61,3 +61,49 @@ switch (browser) {
         console.log("Unknown browser — manual testing needed");
 
 }
+
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script demonstrates case grouping in a switch statement. Multiple case labels
+can be stacked together so they share the same block of code. This is useful when
+different inputs belong to the same category (e.g., multiple Chromium-based browsers).
+
+CODE BREAKDOWN:
+1. let browser = "Firefox";          — Input string.
+2. case "Chrome": case "Edge": ...    — Grouped cases with no break between them.
+3. console.log("Chromium Project!"); — Shared output for the group.
+4. break;                             — Exits after the shared block.
+5. case "Firefox": ...               — Separate block for Mozilla.
+6. default: ...                       — Catch-all for unknown browsers.
+
+KEY CONCEPTS:
+• Case Grouping: Stacking case labels causes them to fall-through intentionally into
+  the same execution block.
+• Shared Behavior: Reduces duplication when many values need the same logic.
+• Strict Equality: Strings must match exactly in value and case.
+
+COMPARISON TABLE — Grouped vs Individual Cases:
+| Style      | Code Duplication | Readability | Best For                  |
+|------------|------------------|-------------|---------------------------|
+| Grouped    | Low              | High        | Related values            |
+| Individual | High             | Medium      | Unique actions per value  |
+
+REAL-WORLD USE CASES:
+• Browser-specific polyfills (Chromium vs Gecko vs WebKit).
+• Region-based pricing (US, CA, MX → North America).
+• Role grouping (admin, super-admin → full access).
+
+COMMON MISTAKES:
+• Accidentally adding a break between grouped cases, preventing the shared block from running.
+• Forgetting the final break after the grouped block.
+• Case-sensitive string mismatches ("chrome" vs "Chrome").
+
+KEY TAKEAWAY:
+Group cases to keep switch statements DRY (Don't Repeat Yourself). Always double-check
+that grouped cases do not have unintended breaks between them.
+================================================================================
+*/

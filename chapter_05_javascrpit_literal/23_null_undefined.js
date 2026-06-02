@@ -281,3 +281,75 @@ console.log("empty:", empty, "| type:", typeof empty);
 
 console.log("null == undefined:", null == undefined, "(loosely equal)");
 console.log("null === undefined:", null === undefined, "(strictly NOT equal)");
+
+/*
+=====================================
+DETAILED EXPLANATION
+=====================================
+This file provides a comprehensive guide to null vs undefined in JavaScript.
+Both represent "empty" states, but undefined is automatically set by JavaScript
+while null is intentionally set by the developer to indicate "no value".
+The file also covers typeof quirks, loose vs strict equality, JSON behavior,
+nullish coalescing, and practical patterns for handling empty values.
+
+CODE BREAKDOWN
+=====================================
+1. UNDEFINED scenarios:
+   - Declared but unassigned variable.
+   - Missing function parameter.
+   - Non-existent object property.
+   - Function with no return statement.
+   - Out-of-bounds array access.
+2. NULL scenarios:
+   - Explicitly clearing a selected product.
+   - Resetting a search query to empty.
+3. typeof checks:
+   - typeof undefined returns "undefined".
+   - typeof null returns "object" (a well-known historical bug).
+4. Comparisons:
+   - null == undefined is true (loose equality with coercion).
+   - null === undefined is false (strict equality checks type).
+5. JSON behavior:
+   - JSON.stringify removes undefined properties but preserves null.
+6. Practical utilities:
+   - isEmpty() checks for null or undefined.
+   - displayMessage() uses nullish coalescing (??) for defaults.
+
+KEY CONCEPTS
+=====================================
+- undefined: Automatically assigned by JS when a value is missing.
+- null: Intentional absence of value, set by the programmer.
+- typeof Quirk: typeof null returns "object" — a bug that cannot be fixed for compatibility.
+- Loose vs Strict Equality: == coerces types; === checks both value and type.
+- JSON Behavior: undefined is stripped, null is kept during serialization.
+- Nullish Coalescing (??): Returns the right operand only when left is null or undefined.
+
+COMPARISON TABLE: null vs undefined
+=====================================
+| Feature          | undefined               | null                      |
+|------------------|-------------------------|---------------------------|
+| Meaning          | Not assigned yet        | Intentionally empty       |
+| Who sets it?     | JavaScript (automatic)  | Developer (manual)        |
+| typeof result    | "undefined"             | "object" (bug)            |
+| == comparison    | true (loosely equal)    | true (loosely equal)      |
+| === comparison   | false                   | false                     |
+| In JSON          | Removed                 | Preserved                 |
+
+REAL-WORLD USE CASES
+=====================================
+- Setting a variable to null when a user deselects an item.
+- Using undefined to detect missing function arguments.
+- Building API payloads where null is meaningful but undefined should be omitted.
+- Providing default values with ?? in configuration objects.
+
+COMMON MISTAKES
+=====================================
+- Using == instead of === when comparing null/undefined.
+- Manually assigning undefined instead of null (use null for intentional emptiness).
+- Forgetting that 0, false, and "" are NOT null/undefined and will not trigger ??.
+- Relying on typeof null to accurately identify null (use === null instead).
+
+KEY TAKEAWAY
+=====================================
+undefined means "not yet given a value"; null means "deliberately emptied". Always use strict equality (===) for reliable comparisons, and use null to clear values intentionally.
+*/

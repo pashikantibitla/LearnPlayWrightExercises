@@ -47,3 +47,69 @@ console.log(process.arch);
 // arm64
 
 console.log("Node Version:", process.version);  //Node Version: v24.13.1
+
+/*
+============================================================
+  EDUCATOR EXPLANATION BLOCK
+============================================================
+
+DETAILED EXPLANATION:
+This script demonstrates how to access built-in environment
+information in Node.js through the global 'process' object.
+Unlike browser JavaScript, which has a 'window' object, Node.js
+exposes 'process' to give scripts details about the operating
+system, CPU architecture, and the runtime version. This is
+essential for writing cross-platform tools and debugging
+environment-specific issues.
+
+CODE BREAKDOWN:
+Step 1: console.log(process.platform);
+        - Accesses process.platform which returns a string such
+          as 'win32', 'darwin', or 'linux'.
+        - The inline comments remind developers what each value
+          means.
+
+Step 2: console.log(process.arch);
+        - Reads the CPU architecture the Node.js binary was
+          compiled for (e.g., 'x64', 'arm64').
+
+Step 3: console.log("Node Version:", process.version);
+        - Retrieves the Node.js version string (e.g., 'v24.13.1').
+        - A descriptive label is printed alongside it for clarity.
+
+KEY CONCEPTS:
+- process: A global object in Node.js providing process info.
+- process.platform: OS identifier string.
+- process.arch: CPU architecture identifier.
+- process.version: Node.js runtime version.
+- Global object: An object always available without importing.
+
+COMPARISON TABLE: Browser vs Node.js Global Objects
+| Property / Need          | Browser (window)          | Node.js (process)         |
+|--------------------------|---------------------------|---------------------------|
+| OS platform              | navigator.userAgent       | process.platform          |
+| CPU architecture         | navigator.platform (deprecated) | process.arch        |
+| JavaScript engine version| navigator.userAgent       | process.version           |
+| Global object name         | window                    | global / globalThis       |
+
+REAL-WORLD USE CASES:
+- A build script that adjusts file paths based on process.platform
+  (Windows uses backslashes; macOS/Linux use forward slashes).
+- Logging the Node.js version in CI/CD pipelines to debug version-
+  specific failures.
+- Shipping different native binaries depending on process.arch.
+
+COMMON MISTAKES TO AVOID:
+- Trying to use 'process' inside a browser script without a polyfill;
+  it will throw a ReferenceError because browsers do not define it.
+- Confusing process.version (Node.js version) with process.versions
+  (detailed versions of V8, libuv, etc.).
+- Hard-coding platform checks like 'win32' without remembering that
+  Windows may also report 'win64' in some contexts.
+
+KEY TAKEAWAY:
+The process object is your window into the Node.js runtime
+environment. Learning to read platform, architecture, and version
+information lets you build robust scripts that adapt to where
+they are running.
+*/

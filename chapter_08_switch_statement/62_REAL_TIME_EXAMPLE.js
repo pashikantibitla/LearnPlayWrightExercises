@@ -60,3 +60,48 @@ switch (responseCode) {
         console.log("Not status code match");
 
 }
+/*
+================================================================================
+                         COMPREHENSIVE EXPLANATION
+================================================================================
+
+DETAILED EXPLANATION:
+This script applies the switch statement to a real-world API validation scenario.
+It maps HTTP response codes to specific log messages, using break to isolate each case
+and a default branch for unrecognized codes.
+
+CODE BREAKDOWN:
+1. let responseCode = 404;           — Simulated HTTP status.
+2. switch (responseCode) { ... }    — Evaluates responseCode.
+3. case 200: console.log("200 Ok"); break;   — Success.
+4. case 404: console.log("404 Not found!"); break; — Client error.
+5. default: console.log("Not status code match");  — Unhandled code.
+
+KEY CONCEPTS:
+• Discrete Value Mapping: switch excels when values are exact and enumerable.
+• Break for Isolation: Prevents unintended fall-through.
+• Default Fallback: Guarantees a response even for unexpected codes.
+
+COMPARISON TABLE — if-else vs switch for API Codes:
+| Criteria          | if-else-if                     | switch                     |
+|-------------------|--------------------------------|----------------------------|
+| Matching style    | Boolean expressions            | Strict equality (===)      |
+| Extensibility     | Easy to add ranges             | Easy to add new cases      |
+| Performance       | Slightly slower (many checks)  | Often optimized by engine  |
+| Readability       | Good for few branches          | Excellent for many codes   |
+
+REAL-WORLD USE CASES:
+• REST client error handling.
+• Payment gateway response parsing.
+• SMS / email delivery status mapping.
+
+COMMON MISTAKES:
+• Using a string case value when the variable is a number (or vice versa).
+• Forgetting break after logging, causing multiple status messages.
+• Omitting default and leaving 500-series errors silent.
+
+KEY TAKEAWAY:
+Use switch for clean, scalable mapping of known discrete values. Pair it with break
+and default to keep the code safe and maintainable.
+================================================================================
+*/

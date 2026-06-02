@@ -64,3 +64,19 @@ This chapter is a deep dive into how JavaScript handles variable declarations, s
 - **Hoisting:** JavaScript moves declarations to the top of their scope during compilation.
 - **Temporal Dead Zone (TDZ):** The period between when a `let`/`const` is hoisted and when it is initialized. Accessing it throws a `ReferenceError`.
 - **Reassignment:** `var` and `let` can be reassigned; `const` cannot be reassigned (but object contents can mutate).
+
+---
+
+## 📖 Inline Explanations in Source Files
+
+> Every `.js` file in this folder now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
+>
+> - **Detailed explanations** of the concepts demonstrated
+> - **Step-by-step code breakdowns** line by line
+> - **Comparison tables** (e.g., `var` vs `let` vs `const`, hoisting rules)
+> - **Key concepts** explained in plain English
+> - **Real-world use cases** and practical applications
+> - **Common mistakes** to avoid
+> - **Key takeaway** summaries
+>
+> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.

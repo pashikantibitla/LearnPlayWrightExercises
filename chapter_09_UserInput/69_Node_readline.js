@@ -102,3 +102,106 @@ rl.question("Enter a number: ", (input) => {
 
     r1.close();
 });
+
+/*
+================================================================================
+                        COMPREHENSIVE EDUCATIONAL GUIDE
+================================================================================
+
+DETAILED EXPLANATION:
+---------------------
+This file demonstrates how to read user input in Node.js using the built-in
+"readline" module. Unlike browsers, Node.js does not have a native prompt()
+function. Instead, it provides the "readline" module which creates an interface
+between your program and the standard input/output streams (process.stdin and
+process.stdout).
+
+The readline approach is asynchronous and event-driven. When rl.question() is
+called, it prints a query to the console and waits for the user to type a line
+of text and press Enter. The user's input is then passed as a string argument
+to the provided callback function. This non-blocking design is a hallmark of
+Node.js and allows the program to handle other tasks while waiting for input.
+
+STEP-BY-STEP CODE BREAKDOWN:
+----------------------------
+Step 1: const readline = require("readline");
+        - Imports Node.js's built-in readline module using CommonJS require().
+        - The module provides methods for reading data from a readable stream
+          one line at a time.
+
+Step 2: const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+        - Creates a readline.Interface instance.
+        - process.stdin is the readable stream (keyboard input).
+        - process.stdout is the writable stream (console output).
+        - This interface buffers input until a newline character is received.
+
+Step 3: rl.question("Enter a number: ", (input) => { ... });
+        - Displays "Enter a number: " to the user.
+        - Waits asynchronously for the user to type a response and press Enter.
+        - The callback (arrow function) receives the raw string input.
+
+Step 4: let num = Number(input);
+        - Converts the user's string input into a number.
+        - If the user typed "7", num becomes 7.
+        - If the user typed "abc", num becomes NaN.
+
+Step 5: if (num % 2 === 0) { ... } else { ... }
+        - Uses the modulo operator to determine even or odd.
+        - Prints the result to the console.
+
+Step 6: rl.close();
+        - Closes the readline interface.
+        - Releases the input/output streams so the Node.js process can exit.
+        - Without this, the program would hang indefinitely waiting for more input.
+
+KEY CONCEPTS:
+-------------
+- Asynchronous Programming: Node.js uses callbacks to handle operations that
+take time (like waiting for user input) without freezing the entire program.
+- Streams: process.stdin and process.stdout are continuous streams of data.
+Readline wraps these streams into a convenient line-by-line interface.
+- Callback Functions: A function passed as an argument to another function,
+which is then invoked inside the outer function to complete some kind of action.
+- Type Conversion: Input from readline is always a string; explicit conversion
+is mandatory for numeric calculations.
+
+COMPARISON TABLE: Input Methods in Node.js
+-------------------------------------------
+| Feature            | readline (built-in)    | prompt-sync (npm)          |
+|--------------------|------------------------|----------------------------|
+| Synchronous?       | No (async/callback)    | Yes (blocking)             |
+| Built-in?           | Yes                    | No (must npm install)      |
+| Complexity          | Medium (more code)     | Low (single line)          |
+| Best For            | Interactive CLIs       | Simple scripts & learners  |
+| Memory Overhead     | Low                    | Very Low                   |
+| Customization       | High (events, history) | Low                        |
+
+REAL-WORLD USE CASES:
+---------------------
+- Building Command Line Interfaces (CLIs) for developer tools.
+- Creating interactive wizards for project scaffolding (e.g., npm init).
+- Developing text-based games or chat applications in the terminal.
+- Reading large files line-by-line to avoid loading the entire file into memory.
+- Building REPLs (Read-Eval-Print Loops) like the Node.js shell.
+
+COMMON MISTAKES TO AVOID:
+-------------------------
+1. Forgetting to call rl.close() → the Node.js process will hang forever.
+2. Missing the Number() conversion and performing string concatenation instead
+   of math (e.g., "5" + "3" = "53", not 8).
+3. Not handling empty input or non-numeric strings, which produce NaN.
+4. Using var instead of let/const for the readline instance, which pollutes
+   the function or global scope unnecessarily.
+5. Trying to use return values from rl.question() synchronously; it returns
+   undefined immediately and delivers the real answer via the callback.
+
+KEY TAKEAWAY:
+-------------
+The "readline" module is the standard, built-in way to handle terminal input in
+Node.js. It is powerful, flexible, and event-driven. Mastering readline is
+essential for building professional CLI tools. Always remember to close the
+interface when you are done, and always validate and convert user input before
+using it in calculations or logic.
+
+================================================================================
+*/

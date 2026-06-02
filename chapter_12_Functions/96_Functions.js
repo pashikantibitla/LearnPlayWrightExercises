@@ -104,3 +104,93 @@ function greet() {
 
 // call - Step 2
 greet();
+
+
+/*
+================================================================================
+                    DETAILED EXPLANATION: INTRODUCTION TO FUNCTIONS
+================================================================================
+
+1. WHAT IS A FUNCTION?
+-----------------------
+A Function is a reusable block of code designed to perform a specific task.
+Instead of writing the same code multiple times, we wrap it inside a function
+and "call" it whenever needed.
+
+  Syntax:
+    function functionName() {
+        // code to execute
+    }
+
+  - `function`   → Keyword to declare a function.
+  - `functionName` → The name you use to call/invoke it later.
+  - `()`         → Parentheses hold parameters (empty here = no input).
+  - `{}`         → Curly braces contain the function body.
+
+
+2. HOW TO USE A FUNCTION (2-STEP PROCESS)
+-----------------------------------------
+  STEP 1 — DEFINE (Declare) the function:
+    function greet() {
+        console.log("Hi, how are you?");
+    }
+
+  STEP 2 — CALL (Invoke) the function:
+    greet();
+
+  >> DEFINITION tells JavaScript WHAT the function does.
+  >> CALLING tells JavaScript WHEN to execute that block.
+
+  Without the call, the function body will NEVER run!
+
+
+3. FUNCTION vs METHOD
+----------------------
+| Feature       | Function                  | Method                             |
+|---------------|---------------------------|------------------------------------|
+| Definition    | Standalone block of code  | Function attached to an object     |
+| Call Syntax   | functionName()            | objectName.methodName()            |
+| `this` Access | No (or refers to global)  | Yes (refers to the parent object)  |
+| Example       | greet()                   | arr.push(), str.toUpperCase()      |
+
+  FUNCTION: Independent. Defined with `function` keyword anywhere.
+  METHOD:   Belongs to an object. Called using dot notation.
+
+
+4. PARAMETER vs ARGUMENT
+-------------------------
+  PARAMETER  → Variable listed in the function DEFINITION (placeholder).
+               Example: In `function greet(name)`, `name` is a parameter.
+
+  ARGUMENT   → Actual VALUE passed when CALLING the function.
+               Example: In `greet("Alice")`, `"Alice"` is an argument.
+
+  | Term      | When used?               | Example                          |
+  |-----------|--------------------------|----------------------------------|
+  | Parameter | At function DEFINITION   | function greet(name) { ... }       |
+  | Argument  | At function CALL         | greet("Alice")                   |
+
+
+5. RETURN vs RETURN TYPE
+-------------------------
+  `return`     → A keyword that IMMEDIATELY exits the function and sends
+                  a value back to the caller.
+                  Example: return a + b;
+
+  RETURN TYPE  → The DATA TYPE of the value the function sends back.
+                 Possible types: number, string, boolean, object, undefined.
+                 If NO `return` statement exists, the return type is `undefined`.
+
+  In this file:
+    greet() has NO return statement → Return Type is `undefined`.
+
+
+6. KEY TAKEAWAY
+----------------
+  Functions = Define Once → Call Many Times.
+  They reduce repetition, make code modular, and are the foundation of
+  reusable logic in JavaScript.
+
+================================================================================
+*/
+
