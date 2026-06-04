@@ -231,12 +231,21 @@ LearnPlaywrightBatch2x/
 │   ├── 90_Iterate.js                   # for, for...of, forEach, for...in, .entries()
 │   └── 91_Transform_Array.js           # map, filter, reduce, flat
 │
+├── chapter_13_Strings/                 ✅ Strings — basics, properties, search, substring, transform, conversion
+│   ├── 118_basic_string.js             # String basics, char vs string, memory allocation, ASCII, UTF-16
+│   ├── 119_String_Properties.js        # length, charAt, charCodeAt, index access, at()
+│   ├── 120_Search_Check_Str.js         # includes, startsWith, endsWith, indexOf, lastIndexOf, search
+│   ├── 121_Substring.js                # slice vs substring with indexing tables and visual diagrams
+│   ├── 122_Transform_Str.js            # toUpperCase, toLowerCase, trim, replace, replaceAll, split, join
+│   ├── 123_SC.js                       # toString, Number, parseInt, parseFloat — conversion methods
+│   └── javascript_stringcheatsheet.md  # Quick reference cheat-sheet for all string methods
+│
 └── README.md                           👋 You are here
 ```
 
 > Each chapter has its **own README.md** with full code walk-throughs and expected output. Jump straight in:
 >
-> [Ch 1](./chapter_01_Basics/README.md) · [Ch 2](./chapter_02_Javascript_Concepts/README.md) · [Ch 3](./chapter_03_Identifier_Literals/README.md) · [Ch 4](./chapter_04_Javascript_Concepts/README.md) · [Ch 5](./chapter_05_Literal/README.md) · [Ch 6](./chapter_06_Operator/README.md) · [Ch 7](./chapter_07_If_else/README.md) · [Ch 8](./chapter_08_Switch_Statement/README.md) · [Ch 9](./chapter_09_UserInput/README.md) · [Ch 10](./chapter_10_Loops/README.md) · [Ch 11](./chapter_11_Arrays/README.md)
+> [Ch 1](./chapter_01_Basics/README.md) · [Ch 2](./chapter_02_Javascript_Concepts/README.md) · [Ch 3](./chapter_03_Identifier_Literals/README.md) · [Ch 4](./chapter_04_Javascript_Concepts/README.md) · [Ch 5](./chapter_05_Literal/README.md) · [Ch 6](./chapter_06_Operator/README.md) · [Ch 7](./chapter_07_If_else/README.md) · [Ch 8](./chapter_08_Switch_Statement/README.md) · [Ch 9](./chapter_09_UserInput/README.md) · [Ch 10](./chapter_10_Loops/README.md) · [Ch 11](./chapter_11_Arrays/README.md) · [Ch 13](./chapter_13_Strings/README.md)
 
 > **Legend:** ✅ Done · 🚧 Coming soon
 
@@ -2148,6 +2157,227 @@ npx playwright show-trace <trace.zip>    # Open trace viewer
 | **Weekend** | Recap the week — re-read code, ask doubts in the group |
 
 > **Rule of thumb:** Don't move to the next chapter until you can explain the previous one out loud.
+
+---
+
+## 📖 What's in Chapter 13 — Strings (Available Now)
+
+### Files
+
+| File | Topic | What you'll learn |
+|------|-------|-------------------|
+| `118_basic_string.js` | String Basics | String vs character, UTF-16 encoding, ASCII values, memory allocation diagrams |
+| `119_String_Properties.js` | Properties & Access | `length`, `charAt()`, `charCodeAt()`, bracket `[index]`, `.at()`, difference tables |
+| `120_Search_Check_Str.js` | Search & Check | `includes()`, `startsWith()`, `endsWith()`, `indexOf()`, `lastIndexOf()`, `search()` with regex |
+| `121_Substring.js` | Substring Methods | `slice()` vs `substring()` — negative indices, swapping, complete indexing tables |
+| `122_Transform_Str.js` | Transform Methods | `toUpperCase()`, `toLowerCase()`, `trim()`, `replace()`, `replaceAll()`, `split()`, `join()` |
+| `123_SC.js` | String Conversion | `toString()`, `String()`, `Number()`, `parseInt()`, `parseFloat()` — comparison tables |
+| `javascript_stringcheatsheet.md` | Reference | All string methods in one quick-reference page |
+
+### Key Concepts
+
+```mermaid
+mindmap
+  root((Chapter 13 — Strings))
+    Basics
+      String primitive
+      Character = length 1 string
+      UTF-16 encoding
+      ASCII 0-127
+    Properties
+      length
+      charAt
+      charCodeAt
+      bracket access [i]
+      at() with negatives
+    Search
+      includes
+      startsWith
+      endsWith
+      indexOf
+      lastIndexOf
+      search with regex
+    Substring
+      slice — supports negatives
+      substring — no negatives
+    Transform
+      toUpperCase
+      toLowerCase
+      trim / trimStart / trimEnd
+      replace / replaceAll
+      split — String → Array
+      join — Array → String
+    Conversion
+      toString / String
+      Number
+      parseInt
+      parseFloat
+```
+
+### Run them
+
+```bash
+node chapter_13_Strings/118_basic_string.js           # → string basics, char vs string, ASCII
+node chapter_13_Strings/119_String_Properties.js      # → length, charAt, charCodeAt, at()
+node chapter_13_Strings/120_Search_Check_Str.js      # → includes, indexOf, search with regex
+node chapter_13_Strings/121_Substring.js             # → slice vs substring, indexing tables
+node chapter_13_Strings/122_Transform_Str.js         # → toUpperCase, trim, replace, split, join
+node chapter_13_Strings/123_SC.js                    # → toString, Number, parseInt, parseFloat
+```
+
+### 118 — String Basics
+
+**Concept:** In JavaScript, there is NO separate `char` type. A "character" is simply a string with `length === 1`. All strings are stored internally as UTF-16 code units (2 bytes per ASCII character). Strings are immutable — any "modification" creates a new string.
+
+**Why:** Test automation constantly manipulates text — locators, URLs, API responses, error messages, file paths. Understanding how strings work under the hood prevents bugs with encoding, indexing, and memory.
+
+**Q&A — why use this?**
+- **Q: Why does JavaScript use UTF-16 instead of ASCII?** A: ASCII only supports 128 characters. UTF-16 supports the entire Unicode range (149,000+ characters) including Hindi, Chinese, Arabic, and Emoji.
+- **Q: How much memory does a single character use?** A: In JavaScript, every ASCII character takes 2 bytes (one UTF-16 code unit). Plus ~12–24 bytes of object header overhead. Much more "expensive" than C's 1-byte char.
+- **Q: Why is `"🚀".length === 2`?** A: The rocket emoji (U+1F680) requires TWO UTF-16 code units (a surrogate pair). Some "visual characters" span multiple code units.
+
+```mermaid
+flowchart LR
+    A["Character 'A'"] --> B["ASCII: 65"]
+    B --> C["UTF-16: 0x0041"]
+    C --> D["2 bytes in memory"]
+    D --> E["String primitive with header"]
+```
+
+```js
+// 118_basic_string.js
+let singleChar = "A";
+console.log(typeof singleChar);        // "string"
+console.log(singleChar.length);        // 1
+console.log(singleChar.charCodeAt(0)); // 65
+
+let multiChar = "ABC";
+console.log(multiChar.length);         // 3
+console.log(multiChar.charCodeAt(0));  // 65 (A)
+console.log(multiChar.charCodeAt(1));  // 66 (B)
+console.log(multiChar.charCodeAt(2));  // 67 (C)
+```
+
+---
+
+### 119 — String Properties & Access
+
+**Concept:** Access string characters via `.length`, bracket notation `[i]`, `.at(i)` (supports negatives), `.charAt(i)` (returns character), and `.charCodeAt(i)` (returns numeric code).
+
+**Why:** Building dynamic selectors, parsing log output, validating API responses, and formatting reports all require precise character-level access.
+
+**Q&A — why use this?**
+- **Q: `charAt()` vs `charCodeAt()` — which when?** A: `charAt()` gives you the LETTER ("A"). `charCodeAt()` gives you the NUMBER (65). Use `charCodeAt` for sorting, comparing, or calculations. Use `charAt` for display.
+- **Q: Why prefer `.at(-1)` over `.charAt(str.length - 1)`?** A: `.at(-1)` is cleaner, more readable, and handles "last character" without calculating length. It's the modern standard.
+- **Q: What happens with out-of-range indices?** A: Bracket `[99]` → `undefined`. `charAt(99)` → `""` (empty string). `charCodeAt(99)` → `NaN`.
+
+```js
+// 119_String_Properties.js
+let str = "Hello, World!";
+console.log(str.length);          // 13
+console.log(str[0]);              // "H"
+console.log(str.at(-1));          // "!"    (modern, negative index)
+console.log(str.charAt(0));       // "H"    (character)
+console.log(str.charCodeAt(0));   // 72     (numeric code)
+```
+
+---
+
+### 120 — Search & Check Methods
+
+**Concept:** Six methods to search within strings: `includes()` (boolean existence), `startsWith()` / `endsWith()` (boundary checks), `indexOf()` / `lastIndexOf()` (position finding), and `search()` (regex-powered position finding).
+
+**Why:** Validating URLs (`startsWith("https")`), checking API responses (`includes("error")`), finding substrings in logs, and pattern matching with regex are daily tasks in test automation.
+
+**Q&A — why use this?**
+- **Q: `indexOf()` vs `search()` — which when?** A: Use `indexOf` for simple substring searches. Use `search` when you need REGEX pattern matching (e.g., `/\d+/` for any digit sequence). `search` does NOT accept a fromIndex parameter.
+- **Q: How do I find ALL occurrences?** A: Loop with `indexOf(sub, fromIndex)` and advance `fromIndex` past each match. Or use `matchAll(/pattern/g)` for regex.
+- **Q: What's the difference between `includes()` and `indexOf() !== -1`?** A: `includes()` returns a boolean directly — more readable and semantic. Prefer `includes` for existence checks.
+
+```js
+// 120_Search_Check_Str.js
+let url = "https://staging.vwo.com/api/login?retry=true";
+
+console.log(url.includes("staging"));      // true
+console.log(url.startsWith("https"));      // true
+console.log(url.endsWith("true"));         // true
+console.log(url.indexOf("a"));             // 15 (first 'a')
+console.log(url.lastIndexOf("a"));         // 24 (last 'a')
+console.log(url.search(/login/));          // 28 (regex match position)
+```
+
+---
+
+### 121 — Substring Methods: slice() vs substring()
+
+**Concept:** Both `slice()` and `substring()` extract portions of a string. The critical difference: `slice()` supports NEGATIVE indices (counts from end) and returns `""` if start > end. `substring()` treats negatives as 0 and AUTOMATICALLY SWAPS if start > end.
+
+**Why:** Extracting test IDs, timestamps, file extensions, protocol schemes, and domain names from URLs all require precise substring operations. Choosing the right method prevents subtle bugs.
+
+**Q&A — why use this?**
+- **Q: When should I use `slice()` over `substring()`?** A: Always prefer `slice()` — it's consistent with Array.slice(), supports negative indices, and is more universally understood. Only use `substring()` if you specifically want the auto-swap behavior.
+- **Q: What happens with `slice(5, 0)` vs `substring(5, 0)`?** A: `slice(5, 0)` → `""` (empty, start > end). `substring(5, 0)` → swaps to `substring(0, 5)` → first 5 characters.
+- **Q: Can I extract the last N characters easily?** A: Yes — `str.slice(-3)` gives the last 3 characters. With `substring`, you'd need `str.substring(str.length - 3)`.
+
+```js
+// 121_Substring.js
+let str = "Login_Test_Pass_001";
+
+console.log(str.slice(0, 5));       // "Login"    (indices 0-4)
+console.log(str.slice(11));         // "Pass_001" (from 11 to end)
+console.log(str.slice(-3));         // "001"      (last 3 chars)
+console.log(str.substring(6, 10));  // "Test"     (indices 6-9)
+```
+
+---
+
+### 122 — String Transformation Methods
+
+**Concept:** Transform strings with `toUpperCase()` / `toLowerCase()` (case changes), `trim()` / `trimStart()` / `trimEnd()` (whitespace removal), `replace()` / `replaceAll()` (substitution), and `split()` / `join()` (string ↔ array conversion).
+
+**Why:** Cleaning user input, formatting test names, building dynamic selectors, parsing CSV data, masking sensitive info, and converting between data formats are all common test automation tasks.
+
+**Q&A — why use this?**
+- **Q: `replace()` vs `replaceAll()` — which when?** A: `replace("a", "b")` replaces only the FIRST "a". Use `replaceAll("a", "b")` to replace ALL occurrences. With regex, `replace(/a/g, "b")` also replaces all.
+- **Q: How do I combine `split()` and `join()`?** A: They are opposites: `"a-b-c".split("-").join("_")` → `"a_b_c"`. Chain them for format conversion.
+- **Q: What's the best way to build strings from variables?** A: Template literals (backticks with `${}`). They're more readable than `+` concatenation and safer than `concat()`.
+
+```js
+// 122_Transform_Str.js
+let str = "  Hello, World!  ";
+console.log(str.trim());                         // "Hello, World!"
+console.log(str.toUpperCase());                    // "  HELLO, WORLD!  "
+
+let msg = "Test: FAIL. Retry: FAIL.";
+console.log(msg.replace("FAIL", "PASS"));          // "Test: PASS. Retry: FAIL."
+console.log(msg.replaceAll("FAIL", "PASS"));         // "Test: PASS. Retry: PASS."
+
+let parts = "pass,fail,skip".split(",");
+console.log(parts);                                // ["pass", "fail", "skip"]
+console.log(parts.join(" | "));                     // "pass | fail | skip"
+```
+
+---
+
+### 123 — String Conversion Methods
+
+**Concept:** Convert between strings and numbers with `toString()` / `String()` (any → string), `Number()` (strict full-string → number), `parseInt()` (extract integer from start), and `parseFloat()` (extract float from start).
+
+**Why:** Parsing API responses, extracting numeric values from CSS, converting test IDs, handling user input, and formatting output all require reliable conversion between types.
+
+**Q&A — why use this?**
+- **Q: `Number("42px")` vs `parseInt("42px")` — why different results?** A: `Number()` requires the ENTIRE string to be numeric → NaN. `parseInt()` reads from left to right and stops at the first non-digit → 42. Use `parseInt` for extracting values from mixed strings.
+- **Q: Why must I specify radix in `parseInt()`?** A: `parseInt("08")` was historically parsed as octal (0) in older JS engines. Always use `parseInt(str, 10)` to force base-10 and avoid surprises.
+- **Q: `toString()` vs `String()` — which is safer?** A: `String()` is safer — it handles `null` and `undefined` without throwing. `null.toString()` throws a TypeError.
+
+```js
+// 123_SC.js
+console.log((200).toString());        // "200"
+console.log(String(null));            // "null"   (safe)
+console.log(Number("42"));           // 42
+console.log(parseInt("42px"));        // 42       (stops at 'p')
+console.log(parseFloat("3.14rem"));   // 3.14     (stops at 'r')
+```
 
 ---
 
