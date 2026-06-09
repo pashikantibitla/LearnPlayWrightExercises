@@ -226,12 +226,29 @@ LearnPlaywrightBatch2x/
 │   ├── 123_SC.js                       # toString, Number, parseInt, parseFloat — conversion methods
 │   └── javascript_stringcheatsheet.md  # Quick reference cheat-sheet for all string methods
 │
+├── chapter_14_Objects/                 ✅ Objects — basics, creation, references, methods, destructuring, getters/setters
+│   ├── 124_Objects.js                  # Object basics, JSON vs JS, array comparison, memory allocation
+│   ├── 125_Objects2.js                 # Key-value pairs, dot vs bracket, references, === comparison
+│   ├── 126_Objects_Creation.js         # Creation methods, same values different objects, equality
+│   ├── 127_Objects_REAL.js             # Dynamic property assignment, delete operator, config objects
+│   ├── 128_Primitive_Ref.js            # Primitive vs reference types, copy by value vs reference
+│   ├── 129_Ob_Examples.js              # JSON vs JS object format, stringify, parse
+│   ├── 130_IQ.js                       # Property access, dynamic keys, property descriptors
+│   ├── 131_Object_Fn.js              # Methods in objects, this keyword, ES6 shorthand
+│   ├── 132_Obj_Decon.js              # Destructuring, rename, defaults, nested destructuring
+│   ├── 133_Spead.js                  # Spread operator, shallow copy, let vs const with objects
+│   ├── 134_Objects_GET_SET_Methods.js  # Getters and setters, computed properties, validation
+│   ├── 135_IQ.txt                      # Object.keys, Object.values, Object.entries, for...in
+│   ├── 136_Obj_REAL.js               # Real-world patterns — ENV configs, API responses, nested structures
+│   ├── 137_Let_const_obj.js          # let vs const with objects, mutation vs reassignment
+│   └── README.md                       # Chapter 14 overview, quick reference, patterns
+│
 └── README.md                           👋 You are here
 ```
 
 > Each chapter has its **own README.md** with full code walk-throughs and expected output. Jump straight in:
 >
-> [Ch 1](./chapter_01_Basics/README.md) · [Ch 2](./chapter_02_Javascript_Concepts/README.md) · [Ch 3](./chapter_03_Identifier_Literals/README.md) · [Ch 4](./chapter_04_Javascript_Concepts/README.md) · [Ch 5](./chapter_05_Literal/README.md) · [Ch 6](./chapter_06_Operator/README.md) · [Ch 7](./chapter_07_If_else/README.md) · [Ch 8](./chapter_08_Switch_Statement/README.md) · [Ch 9](./chapter_09_UserInput/README.md) · [Ch 10](./chapter_10_Loops/README.md) · [Ch 11](./chapter_11_Arrays/README.md) · [Ch 13](./chapter_13_Strings/README.md)
+> [Ch 1](./chapter_01_Basics/README.md) · [Ch 2](./chapter_02_Javascript_Concepts/README.md) · [Ch 3](./chapter_03_Identifier_Literals/README.md) · [Ch 4](./chapter_04_Javascript_Concepts/README.md) · [Ch 5](./chapter_05_Literal/README.md) · [Ch 6](./chapter_06_Operator/README.md) · [Ch 7](./chapter_07_If_else/README.md) · [Ch 8](./chapter_08_Switch_Statement/README.md) · [Ch 9](./chapter_09_UserInput/README.md) · [Ch 10](./chapter_10_Loops/README.md) · [Ch 11](./chapter_11_Arrays/README.md) · [Ch 13](./chapter_13_Strings/README.md) · [Ch 14](./chapter_14_Objects/README.md)
 
 > **Legend:** ✅ Done · 🚧 Coming soon
 
