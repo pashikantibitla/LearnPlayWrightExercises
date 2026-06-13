@@ -1,0 +1,279 @@
+const obj = { a: 1, b: 2, c: 3 };
+
+console.log(Object.keys(obj));
+console.log(Object.values(obj));
+console.log(Object.entries(obj));
+
+const user = { name: "John", age: 30 };
+
+for (const key in user) {
+    console.log(`${key}: ${user[key]}`);
+}
+
+// Object.keys/values/entries
+Object.keys(user).forEach(key => {
+    console.log(key);
+});
+
+Object.entries(user).forEach(([key, value]) => {
+    console.log(`${key}: ${value}`);
+});
+
+
+/*
+================================================================================
+                    DETAILED EXPLANATION: OBJECT ITERATION METHODS
+================================================================================
+
+1. WHAT ARE Object.keys(), Object.values(), Object.entries()?
+-------------------------------------------------------------
+  These are static methods on the Object constructor that let you extract
+  information from an object as arrays.
+
+  A) Object.keys(obj):
+    - Returns an ARRAY of the object's OWN enumerable property names (keys).
+    - Order: same as for...in loop (insertion order for strings, numeric first).
+
+  B) Object.values(obj):
+    - Returns an ARRAY of the object's OWN enumerable property values.
+    - Order matches Object.keys().
+
+  C) Object.entries(obj):
+    - Returns an ARRAY of [key, value] pairs.
+    - Each element is a 2-element array: [key, value].
+    - Order matches Object.keys().
+
+  From file:
+    Object.keys(obj)     →  ["a", "b", "c"]
+    Object.values(obj)   →  [1, 2, 3]
+    Object.entries(obj)  →  [["a", 1], ["b", 2], ["c", 3]]
+
+  Visual:
+
+  obj:
+  ┌─────────────────────────────────────────┐
+  │  a: 1                                   │
+  │  b: 2                                   │
+  │  c: 3                                   │
+  └─────────────────────────────────────────┘
+       ↓
+  Object.keys(obj):
+  ┌─────────────────────────────────────────┐
+  │  ["a", "b", "c"]                        │
+  │     ↑     ↑     ↑                       │
+  │   keys in order                         │
+  └─────────────────────────────────────────┘
+
+  Object.values(obj):
+  ┌─────────────────────────────────────────┐
+  │  [1, 2, 3]                              │
+  │   ↑  ↑  ↑                               │
+  │   values in order                       │
+  └─────────────────────────────────────────┘
+
+  Object.entries(obj):
+  ┌─────────────────────────────────────────┐
+  │  [["a", 1], ["b", 2], ["c", 3]]         │
+  │     ↑        ↑        ↑                │
+  │   [key, value] pairs                    │
+  └─────────────────────────────────────────┘
+
+  Comparison Table:
+
+  ┌─────────────────────┬──────────────────────────┬──────────────────────────┐
+  │ Method              │ Returns                  │ Use Case                 │
+  ├─────────────────────┼──────────────────────────┼──────────────────────────┤
+  │ Object.keys(obj)    │ ["key1", "key2"]         │ Iterate over keys,       │
+  │                     │                          │ check existence          │
+  ├─────────────────────┼──────────────────────────┼──────────────────────────┤
+  │ Object.values(obj)  │ [val1, val2]             │ Extract values,          │
+  │                     │                          │ sum, filter, map          │
+  ├─────────────────────┼──────────────────────────┼──────────────────────────┤
+  │ Object.entries(obj) │ [["k", v], ["k", v]]     │ Iterate both key+value,  │
+  │                     │                          │ convert to Map, destruct   │
+  └─────────────────────┴──────────────────────────┴──────────────────────────┘
+
+
+2. THE for...in LOOP
+---------------------
+  The `for...in` loop iterates over all ENUMERABLE properties of an object,
+  including inherited ones from the prototype chain.
+
+  Syntax:
+    for (const key in object) {
+        // key is the property name (string)
+        // object[key] is the property value
+    }
+
+  From file:
+    for (const key in user) {
+        console.log(`${key}: ${user[key]}`);
+    }
+    // name: John
+    // age: 30
+
+  Key Points:
+    - Iterates over ALL enumerable properties (own + inherited).
+    - Use `hasOwnProperty()` to filter out inherited properties.
+    - Order is not guaranteed for numeric keys (they are sorted).
+    - Returns keys as STRINGS, even for numeric keys.
+
+  Safety Check:
+    for (const key in user) {
+        if (user.hasOwnProperty(key)) {
+            console.log(`${key}: ${user[key]}`);
+        }
+    }
+
+  Comparison:
+
+  ┌─────────────────────┬──────────────────────────┬──────────────────────────┐
+  │ Loop Type           │ What it iterates         │ Inherited Properties?    │
+  ├─────────────────────┼──────────────────────────┼──────────────────────────┤
+  │ for...in            │ Object keys (strings)    │ Yes (includes inherited) │
+  ├─────────────────────┼──────────────────────────┼──────────────────────────┤
+  │ Object.keys         │ Own keys only            │ No                       │
+  ├─────────────────────┼──────────────────────────┼──────────────────────────┤
+  │ Object.values       │ Own values only          │ No                       │
+  ├─────────────────────┼──────────────────────────┼──────────────────────────┤
+  │ Object.entries      │ Own [key, value] pairs   │ No                       │
+  ├─────────────────────┼──────────────────────────┼──────────────────────────┤
+  │ for...of (on keys)  │ Own keys only            │ No                       │
+  └─────────────────────┴──────────────────────────┴──────────────────────────┘
+
+
+3. ITERATING WITH forEach
+--------------------------
+  From file:
+    Object.keys(user).forEach(key => {
+        console.log(key);
+    });
+    // name
+    // age
+
+    Object.entries(user).forEach(([key, value]) => {
+        console.log(`${key}: ${value}`);
+    });
+    // name: John
+    // age: 30
+
+  Destructuring in forEach:
+    - ([key, value]) destructures each [key, value] pair from entries.
+    - This is a clean way to access both key and value.
+
+  Visual:
+
+  Object.entries(user):
+  ┌─────────────────────────────────────────┐
+  │  ["name", "John"]                       │
+  │  ["age", 30]                            │
+  └─────────────────────────────────────────┘
+       ↓
+  .forEach(([key, value]) => { ... })
+       ↓
+  Iteration 1: key = "name", value = "John"
+  Iteration 2: key = "age", value = 30
+
+
+4. COMPLETE INDEXING / MAPPING TABLE
+-------------------------------------
+
+  Object: obj
+
+  ┌─────────────┬─────────────┬─────────────────────────────┐
+  │ Key         │ Value       │ Array Index                 │
+  ├─────────────┼─────────────┼─────────────────────────────┤
+  │ "a"         │ 1           │ 0                           │
+  │ "b"         │ 2           │ 1                           │
+  │ "c"         │ 3           │ 2                           │
+  └─────────────┴─────────────┴─────────────────────────────┘
+
+  Object: user
+
+  ┌─────────────┬─────────────┬─────────────────────────────┐
+  │ Key         │ Value       │ for...in Order              │
+  ├─────────────┼─────────────┼─────────────────────────────┤
+  │ "name"      │ "John"      │ 1st                         │
+  │ "age"       │ 30          │ 2nd                         │
+  └─────────────┴─────────────┴─────────────────────────────┘
+
+  Method Results:
+
+  ┌─────────────────────┬─────────────────────────────┐
+  │ Method Call         │ Result                      │
+  ├─────────────────────┼─────────────────────────────┤
+  │ Object.keys(obj)    │ ["a", "b", "c"]             │
+  │ Object.values(obj)  │ [1, 2, 3]                   │
+  │ Object.entries(obj) │ [["a", 1], ["b", 2],       │
+  │                     │  ["c", 3]]                  │
+  │ Object.keys(user)   │ ["name", "age"]             │
+  │ Object.values(user) │ ["John", 30]                │
+  │ Object.entries(user)│ [["name", "John"],          │
+  │                     │  ["age", 30]]                │
+  └─────────────────────┴─────────────────────────────┘
+
+
+5. PRACTICAL EXAMPLES
+----------------------
+
+  Example 1: Check if object is empty
+    function isEmpty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+    isEmpty({});        // true
+    isEmpty({ a: 1 });  // false
+
+  Example 2: Count object properties
+    const user = { name: "John", age: 30, city: "NYC" };
+    console.log(Object.keys(user).length);  // 3
+
+  Example 3: Sum all values
+    const scores = { math: 90, science: 85, english: 88 };
+    const total = Object.values(scores).reduce((a, b) => a + b, 0);
+    console.log(total);  // 263
+
+  Example 4: Convert object to array of strings
+    const user = { name: "John", age: 30 };
+    const pairs = Object.entries(user).map(([k, v]) => `${k}: ${v}`);
+    console.log(pairs);  // ["name: John", "age: 30"]
+
+  Example 5: Filter object by value
+    const scores = { math: 90, science: 55, english: 88 };
+    const passed = Object.entries(scores)
+        .filter(([subject, score]) => score >= 60)
+        .reduce((obj, [subject, score]) => {
+            obj[subject] = score;
+            return obj;
+        }, {});
+    console.log(passed);  // { math: 90, english: 88 }
+
+  Example 6: Clone with entries
+    const original = { a: 1, b: 2 };
+    const clone = Object.fromEntries(Object.entries(original));
+    console.log(clone);  // { a: 1, b: 2 }
+
+  Example 7: Safe for...in with hasOwnProperty
+    const user = { name: "John" };
+    for (const key in user) {
+        if (user.hasOwnProperty(key)) {
+            console.log(key);  // "name" only
+        }
+    }
+
+
+================================================================================
+                    KEY TAKEAWAY
+================================================================================
+
+  1. Object.keys(obj) → array of keys.
+  2. Object.values(obj) → array of values.
+  3. Object.entries(obj) → array of [key, value] pairs.
+  4. for...in iterates over all enumerable properties (including inherited).
+  5. Use hasOwnProperty() in for...in to filter out inherited properties.
+  6. Object.entries is most versatile — use with forEach, map, filter, reduce.
+  7. Object.fromEntries reverses entries() — converts [[k,v]] back to {k:v}.
+  8. These methods return arrays, so you can use all array methods on them.
+  9. Order of keys: insertion order for strings, sorted for numeric keys.
+
+================================================================================
+*/

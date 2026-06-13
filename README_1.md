@@ -31,20 +31,6 @@ This repository is your **week-by-week course companion** for the LearnPlaywrigh
 - **Playwright** — setup, locators, assertions, fixtures, POM, debugging, CI
 - **Modern QA** — Playwright CLI, AI Agents, and MCP for full STLC automation
 
-### 📖 Inline Documentation Enhancement (NEW)
-
-> **Every `.js` file** in this repository now contains a **comprehensive multi-line comment block** at the end of the file for self-contained revision and reference. Each block includes:
->
-> - **Detailed explanations** of the concepts demonstrated
-> - **Step-by-step code breakdowns** line by line
-> - **Comparison tables** (e.g., `var` vs `let` vs `const`, `for` vs `while`, pure vs impure functions)
-> - **Key concepts** explained in plain English
-> - **Real-world use cases** and practical applications
-> - **Common mistakes** to avoid
-> - **Key takeaway** summaries
->
-> Simply open any `.js` file and scroll to the bottom for a full tutorial on that topic.
-
 ---
 
 ## 🗺️ Curriculum Roadmap
@@ -2252,14 +2238,6 @@ node chapter_13_Strings/123_SC.js                    # → toString, Number, par
 - **Q: Why does JavaScript use UTF-16 instead of ASCII?** A: ASCII only supports 128 characters. UTF-16 supports the entire Unicode range (149,000+ characters) including Hindi, Chinese, Arabic, and Emoji.
 - **Q: How much memory does a single character use?** A: In JavaScript, every ASCII character takes 2 bytes (one UTF-16 code unit). Plus ~12–24 bytes of object header overhead. Much more "expensive" than C's 1-byte char.
 - **Q: Why is `"🚀".length === 2`?** A: The rocket emoji (U+1F680) requires TWO UTF-16 code units (a surrogate pair). Some "visual characters" span multiple code units.
-
-```mermaid
-flowchart LR
-    A["Character 'A'"] --> B["ASCII: 65"]
-    B --> C["UTF-16: 0x0041"]
-    C --> D["2 bytes in memory"]
-    D --> E["String primitive with header"]
-```
 
 ```js
 // 118_basic_string.js
