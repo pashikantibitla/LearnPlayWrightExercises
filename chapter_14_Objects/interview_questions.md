@@ -1009,6 +1009,225 @@ arr.forEach(value => {
 
 ---
 
+### Q21. Why should we use `const` for object references like `const obj1 = { a: 1, b: 2 }`?
+
+**Answer:** Using `const` for object references is a best practice in modern JavaScript because it locks the **variable binding** (the reference/pointer) while still allowing the object's properties to be mutated. This prevents accidental reassignment, which is one of the most common sources of bugs.
+
+```js
+const obj1 = { a: 1, b: 2 };
+obj1.a = 100;      // ✅ Allowed — mutating the object
+obj1.c = 3;        // ✅ Allowed — adding new properties
+// obj1 = { x: 10 }; // ❌ TypeError — reassignment blocked
+```
+
+---
+
+#### Memory Perspective: Why `const` for Objects?
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                     MEMORY: const vs let WITH OBJECTS                        │
+│                                                                             │
+│  STEP 1: Declaration                                                        │
+│  ─────────────────────────────────────────────────────────────────────────  │
+│                                                                             │
+│  const obj1 = { a: 1, b: 2 };                                               │
+│                                                                             │
+│  ┌─────────────┐        ┌─────────────┐        ┌─────────────────────────┐│
+│  │   STACK     │        │   STACK     │        │         HEAP            ││
+│  │             │        │             │        │                         ││
+│  │ obj1        │───────→│ 0xA1F2      │───────→│ { a: 1, b: 2 }         ││
+│  │ (const)     │        │ (reference) │        │ Address: 0xA1F2         ││
+│  │ 🔒 LOCKED   │        │             │        │                         ││
+│  └─────────────┘        └─────────────┘        └─────────────────────────┘│
+│                                                                             │
+│  The variable `obj1` in the STACK holds a REFERENCE (pointer) to the        │
+│  object in the HEAP. The `const` keyword locks this binding — the pointer   │
+│  cannot be changed. But the object data IN the HEAP is still mutable.       │
+│                                                                             │
+│                                                                             │
+│  STEP 2: Mutation (ALLOWED)                                                   │
+│  ─────────────────────────────────────────────────────────────────────────  │
+│                                                                             │
+│  obj1.a = 100;                                                              │
+│                                                                             │
+│  ┌─────────────┐        ┌─────────────┐        ┌─────────────────────────┐│
+│  │   STACK     │        │   STACK     │        │         HEAP            ││
+│  │             │        │             │        │                         ││
+│  │ obj1        │───────→│ 0xA1F2      │───────→│ { a: 100, b: 2 }       ││
+│  │ (const)     │        │ (reference) │        │ Address: 0xA1F2         ││
+│  │ 🔒 LOCKED   │        │             │        │ (mutated IN-PLACE)      ││
+│  └─────────────┘        └─────────────┘        └─────────────────────────┘│
+│                                                                             │
+│  The object data changes, but the REFERENCE stays the same.                 │
+│  The pointer in the stack still points to 0xA1F2.                           │
+│                                                                             │
+│                                                                             │
+│  STEP 3: Reassignment (BLOCKED by const)                                      │
+│  ─────────────────────────────────────────────────────────────────────────  │
+│                                                                             │
+│  obj1 = { x: 10 }; // ❌ TypeError                                          │
+│                                                                             │
+│  ┌─────────────┐        ┌─────────────┐        ┌─────────────────────────┐│
+│  │   STACK     │        │   STACK     │        │         HEAP            ││
+│  │             │        │             │        │                         ││
+│  │ obj1        │───────→│ 0xA1F2      │   ┌───→│ { a: 100, b: 2 }       ││
+│  │ (const)     │        │ (reference) │   │    │ Address: 0xA1F2         ││
+│  │ 🔒 LOCKED   │        │             │   │    │                         ││
+│  └─────────────┘        └─────────────┘   │    └─────────────────────────┘│
+│                                             │                               │
+│        ❌ CANNOT redirect pointer to:        │                               │
+│        ┌─────────────────────────┐           │                               │
+│        │ { x: 10 }              │◄──────────┘                               │
+│        │ Address: 0xB3C4        │  (new object — blocked!)                  │
+│        └─────────────────────────┘                                           │
+│                                                                             │
+│  `const` prevents the pointer from being redirected to a new address.       │
+│  The old object at 0xA1F2 would be garbage collected if no other refs.      │
+│                                                                             │
+│                                                                             │
+│  STEP 4: What let allows (for comparison)                                    │
+│  ─────────────────────────────────────────────────────────────────────────  │
+│                                                                             │
+│  let obj2 = { a: 1, b: 2 };                                                 │
+│  obj2 = { x: 10 }; // ✅ Allowed                                            │
+│                                                                             │
+│  ┌─────────────┐        ┌─────────────┐        ┌─────────────────────────┐│
+│  │   STACK     │        │   STACK     │        │         HEAP            ││
+│  │             │        │             │        │                         ││
+│  │ obj2        │───────→│ 0xB3C4      │───────→│ { x: 10 }              ││
+│  │ (let)       │        │ (NEW ref)   │        │ Address: 0xB3C4         ││
+│  │             │        │             │   ┌───→│                         ││
+│  └─────────────┘        └─────────────┘   │    └─────────────────────────┘│
+│                                             │                               │
+│        Old object is now orphaned:            │                               │
+│        ┌─────────────────────────┐           │                               │
+│        │ { a: 1, b: 2 }         │◄──────────┘ (eligible for GC)             │
+│        │ Address: 0xA1F2        │  (no references point here)                │
+│        └─────────────────────────┘                                           │
+│                                                                             │
+│  With `let`, the pointer can be redirected. The old object becomes            │
+│  unreachable (orphaned) and will be garbage collected.                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+#### Why `const` is the Best Practice
+
+```js
+// ❌ BAD: Using let — accidental reassignment is possible
+let config = { apiUrl: "https://api.example.com" };
+// ... 500 lines later ...
+config = null; // ❌ Bug! Someone accidentally reassigned
+// All downstream code that reads config.apiUrl will crash
+
+// ✅ GOOD: Using const — reassignment is blocked at compile time
+const config = { apiUrl: "https://api.example.com" };
+// ... 500 lines later ...
+// config = null; // ❌ TypeError: Assignment to constant variable.
+// This catches the bug immediately during development
+
+// You can still mutate safely:
+config.timeout = 5000; // ✅ Allowed
+config.retries = 3;    // ✅ Allowed
+```
+
+---
+
+#### `const` Locks the Binding, Not the Contents
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    const LOCKS BINDING, NOT CONTENTS                         │
+│                                                                             │
+│  ┌─────────────────────┬──────────────────────────┬─────────────────────┐  │
+│  │ Concept               │ What const locks         │ What it does NOT    │  │
+│  ├─────────────────────┼──────────────────────────┼─────────────────────┤  │
+│  │ Variable binding      │ ✅ Pointer/reference     │ ❌ Object contents  │  │
+│  │ Stack value           │ ✅ Reference address     │ ❌ Heap data        │  │
+│  │ Reassignment          │ ✅ BLOCKED               │ ❌ Not blocked      │  │
+│  │ Property mutation     │ ❌ NOT blocked           │ ✅ Object is mutable│  │
+│  │ Property addition     │ ❌ NOT blocked           │ ✅ Normal behavior  │  │
+│  │ Property deletion     │ ❌ NOT blocked           │ ✅ Normal behavior  │  │
+│  └─────────────────────┴──────────────────────────┴─────────────────────┘  │
+│                                                                             │
+│  Think of it like:                                                          │
+│    - `const` = "This name tag is permanently glued to this box."              │
+│    - But you can still add, remove, or change items inside the box.         │
+│                                                                             │
+│  ┌─────────┐                                                                │
+│  │ obj1    │───────→ ┌──────────────────────┐                              │
+│  │ (const) │         │  📦 Object Box        │                              │
+│  │ 🔒 tag  │         │  ┌────────────────┐  │                              │
+│  │         │         │  │ a: 100          │  │                              │
+│  │         │         │  │ b: 2            │  │  ← Change these anytime!     │
+│  │         │         │  │ c: 3            │  │                              │
+│  │         │         │  └────────────────┘  │                              │
+│  │         │         │  Address: 0xA1F2     │                              │
+│  │         │         └──────────────────────┘                              │
+│  │         │                                                                │
+│  │  ❌ CANNOT point to a different box!                                     │
+│  └─────────┘                                                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+#### When to Use `let` vs `const` for Objects
+
+```js
+// ✅ Use const — ALWAYS (default choice)
+const user = { name: "John" };
+const config = { timeout: 3000 };
+const arr = [1, 2, 3];
+
+// ✅ Use let — ONLY when you need to reassign the reference
+let currentUser = null;       // Will be assigned later
+let parsedData = rawData;      // May need to reassign
+
+if (isLoggedIn) {
+    currentUser = { name: "John" }; // let allows this
+}
+
+// ❌ Common mistake: using let "just in case"
+let data = { x: 1 }; // If you never reassign, use const!
+
+// Best practice: Start with const, change to let only if needed
+```
+
+---
+
+#### Complete Comparison Table
+
+```
+┌─────────────────────┬─────────────────────────────┬─────────────────────────────┐
+│ Operation           │ let obj = { a: 1 }         │ const obj = { a: 1 }         │
+├─────────────────────┼─────────────────────────────┼─────────────────────────────┤
+│ obj.a = 2           │ ✅ Allowed (mutate)         │ ✅ Allowed (mutate)         │
+│ obj.b = 3           │ ✅ Allowed (add)            │ ✅ Allowed (add)            │
+│ delete obj.a        │ ✅ Allowed (delete)         │ ✅ Allowed (delete)         │
+│ obj = { x: 1 }      │ ✅ Allowed (new object)     │ ❌ TypeError (reassign)     │
+│ obj = null          │ ✅ Allowed                  │ ❌ TypeError                │
+│ obj = anotherObj    │ ✅ Allowed                  │ ❌ TypeError                │
+├─────────────────────┼─────────────────────────────┼─────────────────────────────┤
+│ Memory: pointer     │ Mutable (can redirect)      │ Immutable (locked)         │
+│ Memory: heap data   │ Mutable                     │ Mutable                    │
+│ Safety              │ Risk of accidental reassign │ Safe — catches bugs early  │
+│ Best practice       │ ⚠️ Use sparingly          │ ✅ Preferred default        │
+└─────────────────────┴─────────────────────────────┴─────────────────────────────┘
+```
+
+---
+
+#### Key Takeaway
+
+> **Use `const` for all object references by default.** It locks the pointer in the stack, preventing accidental reassignment, while still allowing you to mutate the object's properties. This is the most common pattern in modern JavaScript because it provides safety without sacrificing flexibility. Only use `let` when you genuinely need to redirect the reference to a different object.
+
+---
+
 ## 4. Object Deep Dive
 
 ### Property Descriptors
